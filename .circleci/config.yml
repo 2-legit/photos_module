@@ -1,8 +1,10 @@
+version: 2.1
+
 workflows:
-  version: 2.1
-  jobs:
-    build:
-      docker:
-        - image: circleci/node:6.13.0
-      steps:
-        - run: echo "Placeholder step"
+  "Temporary Workflow":
+    jobs:
+      build:
+        docker:
+          - image: circleci/node:6.13.0
+        steps:
+          - run: echo "Placeholder step"
