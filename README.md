@@ -24,7 +24,20 @@
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
-- etc
+- Express
+- MySQL
+
+### Client Module Dependencies:
+
+- React
+- Redux
+- Redux-Thunk
+
+### Dev Dependencies:
+
+- ESLint
+- Babel (cli, core, preset-react)
+- Webpack
 
 ## Development
 
