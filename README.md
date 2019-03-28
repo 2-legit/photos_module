@@ -30,14 +30,21 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ### Client Module Dependencies:
 
 - React
+- React-DOM
 - Redux
 - Redux-Thunk
 
 ### Dev Dependencies:
 
+#### Linting and Compilation:
 - ESLint
 - Babel (cli, core, preset-react)
+- Babel-Loader
 - Webpack
+
+#### Testing Frameworks:
+- Jest
+- Enzyme (enzyme, enzyme-adapter-react-16)
 
 ## Development
 
