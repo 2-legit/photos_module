@@ -1,8 +1,8 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "hrsf113-group-2-fec-photos-module",
+  "version": "0.0.1",
+  "description": "Service and client module for the photos view of HRSF113-Group-2's FEC project",
+  "author": "Kristoffer Enriquez",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
@@ -12,13 +12,16 @@
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "react": "^16.8.5",
+    "react-dom": "^16.8.6",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
