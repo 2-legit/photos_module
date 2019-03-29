@@ -1,11 +1,11 @@
+const Sequelize = require('sequelize');
+
+const DB_USER = 'fec-photo-service';
 const DB_PASS = require('./pass.js');
 
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
+const sequelize = new Sequelize(null, DB_USER, DB_PASS, {
   host: 'localhost',
-  user: 'fec-photo-service',
-  password: DB_PASS
+  dialect: 'mysql'
 });
 
-module.exports = connection;
+module.exports = sequelize;

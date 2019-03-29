@@ -6,4 +6,8 @@ app.use(express.static('public'));
 
 const port = 3000;
 
-app.listen(port, () => console.log('[Server] Now listening on port', port));
+app.listen(port, () => {
+  console.log('[Server] Now listening on port', port);
+
+  require('./database/init.js');
+});
