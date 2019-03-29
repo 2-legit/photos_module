@@ -24,3 +24,5 @@ coverage
 build/
 dist/
 
+# Database information
+server/database/pass.js
