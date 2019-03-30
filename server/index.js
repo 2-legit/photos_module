@@ -14,5 +14,3 @@ app.listen(port, () => {
   console.log('[Server] Now listening on port', port);
   initializeDatabase();
 });
-
-module.exports = express.Router();

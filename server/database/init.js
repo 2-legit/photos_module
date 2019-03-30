@@ -1,5 +1,11 @@
+/**
+ * Database initialization file
+ * Creates a new database and adds a table to it
+ */
+
 const sequelize = require('./connection.js');
 
+// Define constants for use in creating the database and tables
 const DB_NAME = 'photo';
 const TABLE_NAME = 'photos';
 const TABLE = {
@@ -11,6 +17,8 @@ const TABLE = {
   'PRIMARY KEY': '(id)'
 }
 
+// Take both a string name and an object, return a string that is
+// used to make a raw query to the database
 var createTableQueryString = function(tableName, table) {
   var queryString = 'CREATE TABLE IF NOT EXISTS `' + tableName + '` (';
 
@@ -23,29 +31,27 @@ var createTableQueryString = function(tableName, table) {
   return queryString += `\n);`;
 };
 
+// Database initialization function
 var initialize = function() {
+  
+  sequelize.authenticate() // Check if the connection to MySQL is ready
 
-  sequelize.authenticate()
-
-  .then(() => {
+  .then(() => { // then, make the database if it does not already exist
     console.log('[Server] MySQL connection ready, initializing database...');
-    // return a call to sequelize query submission function to create database
     return sequelize.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`);
   })
 
-  .then(() => {
+  .then(() => { // then, use the database
     console.log(`[Server] Database "${DB_NAME}" created or exists, now using...`);
-    // return a call to sequelize query submission function to use database
     return sequelize.query(`USE ${DB_NAME};`);
   })
 
-  .then(() => {
+  .then(() => { // then, create the table if none already exists
     console.log(`[Server] Now using database ${DB_NAME}, creating table...`);
-    // return a call to sequelize query submission function to create the table
     return sequelize.query(createTableQueryString(TABLE_NAME, TABLE));
   })
 
-  .then(() => {
+  .then(() => { // log the creation of the table
     console.log(`[Server] Table "${TABLE_NAME}" successfully created.`)
   })
   
