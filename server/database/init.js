@@ -34,7 +34,7 @@ var createTableQueryString = function(tableName, table) {
 // Database initialization function
 var initialize = function() {
   
-  sequelize.authenticate() // Check if the connection to MySQL is ready
+  return sequelize.authenticate() // Check if the connection to MySQL is ready
 
   .then(() => { // then, make the database if it does not already exist
     console.log('[Server] MySQL connection ready, initializing database...');
