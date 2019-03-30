@@ -23,35 +23,36 @@ var createTableQueryString = function(tableName, table) {
   return queryString += `\n);`;
 };
 
-sequelize.authenticate()
+var initialize = function() {
 
-.then(() => {
-  console.log('[MySQL] Connection ready, initializing database...');
-  // return a call to sequelize query submission function to create database
-  return sequelize.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`);
-})
-.catch((error) => {
-  console.error('[MySQL] Error:\n', error);
-})
+  sequelize.authenticate()
 
-.then(() => {
-  console.log(`[MySQL] Database "${DB_NAME}" created or exists, now using...`);
-  // return a call to sequelize query submission function to use database
-  return sequelize.query(`USE ${DB_NAME}`);
-})
-.catch((error) => {
-  console.error('[MySQL] Error:\n', error);
-  // if database could not be created, try using it if it exists
-  return sequelize.query(`USE ${DB_NAME} IF EXISTS;`);
-})
+  .then(() => {
+    console.log('[Server] MySQL connection ready, initializing database...');
+    // return a call to sequelize query submission function to create database
+    return sequelize.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`);
+  })
 
-.then(() => {
-  console.log(`[MySQL] Now using database ${DB_NAME}.`);
-  // return a call to sequelize query submission function to create the table
-  return sequelize.query(createTableQueryString(TABLE_NAME, TABLE));
-})
-.catch((error) => {
-  console.error('[MySQL] Error:\n', error);
-});
+  .then(() => {
+    console.log(`[Server] Database "${DB_NAME}" created or exists, now using...`);
+    // return a call to sequelize query submission function to use database
+    return sequelize.query(`USE ${DB_NAME};`);
+  })
 
-module.exports = sequelize;
+  .then(() => {
+    console.log(`[Server] Now using database ${DB_NAME}, creating table...`);
+    // return a call to sequelize query submission function to create the table
+    return sequelize.query(createTableQueryString(TABLE_NAME, TABLE));
+  })
+
+  .then(() => {
+    console.log(`[Server] Table "${TABLE_NAME}" successfully created.`)
+  })
+  
+  .catch((error) => {
+    console.error(error);
+  });
+
+};
+
+module.exports = initialize;
