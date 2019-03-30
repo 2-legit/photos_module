@@ -12,5 +12,5 @@ const port = 3000;
 
 app.listen(port, () => {
   console.log('[Server] Now listening on port', port);
-  initializeDatabase();
+  initializeDatabase().then(()=>{});
 });
