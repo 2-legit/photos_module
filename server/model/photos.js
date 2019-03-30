@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../database/connection.js');
 
-const Photo = sequelize.define('photo', {
+const Photo = sequelize.define('photos', {
   id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
   list: Sequelize.INTEGER,
   roomid: Sequelize.INTEGER,
