@@ -21,11 +21,13 @@ const TABLE = {
 // used to make a raw query to the database
 const createTableQueryString = function (tableName, table) {
   let queryString = `CREATE TABLE IF NOT EXISTS \`${tableName}\` (`;
-  for (const field in table) {
-    queryString += `\n  ${field} ${table[field]},`;
+  const fields = Object.keys(table);
+  for (let i = 0; i < fields.length; i += 1) {
+    queryString += `\n  ${fields[i]} ${table[fields[i]]},`;
   }
   queryString = queryString.slice(0, queryString.length - 1);
-  return queryString += '\n);';
+  queryString += '\n);';
+  return queryString;
 };
 
 // Database initialization function
