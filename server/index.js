@@ -1,10 +1,10 @@
 const express = require('express');
+const router = require('./router');
 const initializeDatabase = require('./database/init.js');
 
 const app = express();
-const router = require('./router');
 
-app.use(express.static('public'));
+app.use('/', express.static('public'));
 
 app.use('/photos', router);
 
