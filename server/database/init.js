@@ -20,7 +20,7 @@ const TABLE = {
 // Take both a string name and an object, return a string that is
 // used to make a raw query to the database
 function createTableQueryString(tableName, table) {
-  let queryString = `CREATE TABLE IF NOT EXISTS \`${tableName}\` (`;
+  let queryString = `CREATE TABLE IF NOT EXISTS ${tableName} (`;
   const fields = Object.keys(table);
   for (let i = 0; i < fields.length; i += 1) {
     queryString += `\n  ${fields[i]} ${table[fields[i]]},`;
