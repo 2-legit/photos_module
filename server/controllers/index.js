@@ -6,6 +6,9 @@ module.exports = {
       Photo.findAll({ where: { roomid: req.params.roomid } })
         .then((result) => {
           res.send({ photos: result });
+        })
+        .catch(() => {
+          res.status(500).end();
         });
     },
   },
