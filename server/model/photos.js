@@ -6,7 +6,7 @@ const Photo = sequelize.define('photos', {
   list: Sequelize.INTEGER,
   roomid: Sequelize.INTEGER,
   imageurl: Sequelize.STRING(150),
-  imagedesc: Sequelize.STRING(150)
+  imagedesc: Sequelize.STRING(150),
 }, { timestamps: false });
 
 module.exports = Photo;
