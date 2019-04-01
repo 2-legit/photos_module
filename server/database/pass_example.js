@@ -3,5 +3,5 @@
 
 module.exports = {
   DB_USER: 'user',
-  DB_PASS: 'pass'
+  DB_PASS: 'pass',
 };

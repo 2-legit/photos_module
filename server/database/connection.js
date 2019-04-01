@@ -4,7 +4,7 @@ const { DB_USER, DB_PASS } = require('./pass.js');
 
 const sequelize = new Sequelize(null, DB_USER, DB_PASS, {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mysql',
 });
 
 module.exports = sequelize;
