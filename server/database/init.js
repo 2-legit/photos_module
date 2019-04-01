@@ -19,7 +19,7 @@ const TABLE = {
 
 // Take both a string name and an object, return a string that is
 // used to make a raw query to the database
-const createTableQueryString = function (tableName, table) {
+function createTableQueryString(tableName, table) {
   let queryString = `CREATE TABLE IF NOT EXISTS \`${tableName}\` (`;
   const fields = Object.keys(table);
   for (let i = 0; i < fields.length; i += 1) {
@@ -28,10 +28,10 @@ const createTableQueryString = function (tableName, table) {
   queryString = queryString.slice(0, queryString.length - 1);
   queryString += '\n);';
   return queryString;
-};
+}
 
 // Database initialization function
-const initialize = function () {
+function initialize() {
   return sequelize.authenticate() // Check if the connection to MySQL is ready
     .then(() => { // then, make the database if it does not already exist
       console.log('[Server] MySQL connection ready, initializing database...');
@@ -51,6 +51,6 @@ const initialize = function () {
     .catch((error) => {
       console.error(error);
     });
-};
+}
 
 module.exports = initialize;
