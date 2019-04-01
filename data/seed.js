@@ -23,7 +23,6 @@ const seedDatabase = (rooms) => {
         }
       }
       Photo.bulkCreate(array) // Create the records on the database
-        .then(() => console.log('\n[Server] Test data generated, creating records...\n'))
         .catch(error => console.error(error));
     })
     .catch(error => console.error(error));
