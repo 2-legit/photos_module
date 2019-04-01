@@ -22,7 +22,6 @@
     "react-dom": "^16.8.6",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "request": "^2.88.0",
     "sequelize": "^5.2.3"
   },
   "devDependencies": {
@@ -34,9 +33,11 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.15.3",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.5.0",
+    "jest-enzyme": "^7.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
