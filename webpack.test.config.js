@@ -6,7 +6,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'test/compiled'),
-    filename: 'client.test.js'
+    filename: 'client.test.js',
   },
 
   module: {
@@ -17,11 +17,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
-          }
-        }
-      }
-    ]
-  }
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 
-}
+};
