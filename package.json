@@ -13,7 +13,8 @@
     "seed": "node data/seed.js",
     "eslint": "eslint .; exit 0",
     "eslint:fix": "eslint . --fix; exit 0",
-    "test:all": "jest --coverage"
+    "test:server": "jest ./test/server.test.js --coverage",
+    "test:client": "webpack -d --config webpack.test.config.js; jest ./test/compiled/client.test.js --coverage"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -31,6 +32,7 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.6.0",
     "babel-loader": "^8.0.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
@@ -39,8 +41,14 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.5.0",
+    "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./node_modules/jest-enzyme/lib/index.js"
+    ]
   }
 }
