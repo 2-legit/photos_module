@@ -14,7 +14,7 @@
     "eslint": "eslint .; exit 0",
     "eslint:fix": "eslint . --fix; exit 0",
     "test:server": "jest ./test/server.test.js --coverage",
-    "test:client": "webpack -d --config webpack.test.config.js; jest ./test/compiled/client.test.js --coverage"
+    "test:client": "webpack --config webpack.test.config.js; jest ./test/compiled/client.test.js --coverage"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.6.0",
