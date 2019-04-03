@@ -20,5 +20,6 @@ test('should have access to enzyme', () => {
 test('should be able to mock-render jsx expressions', () => {
   const element = Enzyme.shallow(<h1>Hello world!</h1>);
 
-  expect(element).not.toBe(undefined);
+  expect(element).not.toBe(null);
+  expect(element.text()).toBe("Hello world!");
 });
