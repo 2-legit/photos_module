@@ -2,11 +2,14 @@ const path = require('path');
 
 module.exports = {
 
-  entry: './test/client.test.js',
+  entry: {
+    component: './test/client.test.js',
+    state: './test/state.test.js'
+  },
 
   output: {
     path: path.resolve(__dirname, 'test/compiled'),
-    filename: 'client.test.js',
+    filename: '[name].test.js',
   },
 
   module: {

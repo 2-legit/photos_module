@@ -23,6 +23,8 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 dist/
+public/main.js
+test/compiled
 
 # Database information
 server/database/pass.js
