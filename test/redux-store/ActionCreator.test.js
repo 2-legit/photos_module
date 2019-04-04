@@ -17,7 +17,7 @@ describe('checkWidth', () => {
     const action = checkWidth();
 
     expect(typeof action).toBe('object');
-    expect(action.action).toBe('CHECK_WIDTH');
+    expect(action.type).toBe('CHECK_WIDTH');
   });
 
   test('should send the window object\'s innerHeight property as the payload', () => {
@@ -38,7 +38,7 @@ describe('focusImage', () => {
     const action = focusImage(0);
 
     expect(typeof action).toBe('object');
-    expect(action.action).toBe('FOCUS_IMAGE');
+    expect(action.type).toBe('FOCUS_IMAGE');
   });
 
   test('should send the input index as the payload', () => {
@@ -59,7 +59,7 @@ describe('defocusAll', () => {
     const action = defocusAll();
 
     expect(typeof action).toBe('object');
-    expect(action.action).toBe('DEFOCUS_ALL');
+    expect(action.type).toBe('DEFOCUS_ALL');
   });
 
 });
@@ -74,7 +74,7 @@ describe('toggleModal', () => {
     const action = toggleModal(0);
 
     expect(typeof action).toBe('object');
-    expect(action.action).toBe('TOGGLE_MODAL');
+    expect(action.type).toBe('TOGGLE_MODAL');
   });
 
   test('should send the photo index as the payload', () => {
@@ -101,7 +101,7 @@ describe('modalSelect', () => {
     const action = modalSelect(0);
 
     expect(typeof action).toBe('object');
-    expect(action.action).toBe('MODAL_SELECT');
+    expect(action.type).toBe('MODAL_SELECT');
   });
 
   test('should take a photo index and send it as the payload', () => {
