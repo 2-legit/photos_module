@@ -120,19 +120,22 @@ describe('mainDisplay', () => {
       // invoke action creator for FOCUS_IMAGE with the created variable
       const FOCUS_IMAGE = focusImage(index);
       // pass into photoApp a valid state and the created action
-      const newState = photoApp(undefined, FOCUS_IMAGE);
+      let newState = photoApp(undefined, FOCUS_IMAGE);
       // assert that the new state's property is equal to the index passed
       expect(newState.mainDisplay.inFocus).toEqual(index);
     });
 
     // test: should only work for integers between 0 and 4 for displayMode 'FULLSIZE'
     test('should only work for integers between 0 and 4 for displayMode \'FULLSIZE\'', () => {
+      window.innerWidth = 1600;
+      let CHECK_WIDTH = checkWidth();
       // create a variable to hold an index between 0 and 4
       let index = 4;
       // create an action object of FOCUS_IMAGE with index 4
       let FOCUS_IMAGE = focusImage(index);
       // pass into photoApp a state object and the action object
-      let newState = photoApp(undefined, FOCUS_IMAGE);
+      let newState = photoApp(undefined, CHECK_WIDTH);
+      newState = photoApp(newState, FOCUS_IMAGE);
       // assert that the new state's property is equal to 4
       expect(newState.mainDisplay.inFocus).toEqual(index);
 
@@ -148,12 +151,15 @@ describe('mainDisplay', () => {
 
     // test: should only work for integers between 0 and 2 for displayMode 'MIDSIZE'
     test('should only work for integers between 0 and 2 for displayMode \'MIDSIZE\'', () => {
+      window.innerWidth = 1000;
+      let CHECK_WIDTH = checkWidth();
       // create a variable to hold an index between 0 and 2
       let index = 2;
       // create an action object of FOCUS_IMAGE with index 2
       let FOCUS_IMAGE = focusImage(index);
       // pass into photoApp a state object and the action object
-      let newState = photoApp(undefined, FOCUS_IMAGE);
+      let newState = photoApp(undefined, CHECK_WIDTH);
+      newState = photoApp(newState, FOCUS_IMAGE);
       // assert that the new state's property is equal to 2
       expect(newState.mainDisplay.inFocus).toEqual(index);
 
@@ -162,19 +168,22 @@ describe('mainDisplay', () => {
       // create an action object of FOCUS_IMAGE
       FOCUS_IMAGE = focusImage(index);
       // pass into photoApp a state object and the action object
-      newState = photoApp(undefined, FOCUS_IMAGE);
+      newState = photoApp(newState, FOCUS_IMAGE);
       // assert that the new state's property is equal to 'NONE'
       expect(newState.mainDisplay.inFocus).toEqual('NONE');
     });
 
     // test: should not work for displayMode 'COMPACT'
     test('should not work for displayMode \'COMPACT\'', () => {
+      window.innerWidth = 700;
+      const CHECK_WIDTH = checkWidth();
       // create a variable to hold an index of 2
       const index = 2;
       // create an action object of FOCUS_IMAGE
       const FOCUS_IMAGE = focusImage(index);
       // pass into photoApp a state object and the action object
-      const newState = photoApp(undefined, FOCUS_IMAGE);
+      let newState = photoApp(undefined, CHECK_WIDTH);
+      newState = photoApp(newState, FOCUS_IMAGE);
       // assert that the new state's property is equal to 'NONE'
       expect(newState.mainDisplay.inFocus).toEqual('NONE');
     });

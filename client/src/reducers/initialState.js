@@ -1,10 +1,10 @@
 const initialState = {
   mainDisplay: {
     photos: [],
-    displayMode: 'COMPACT',
+    displayMode: 'FULLSIZE',
     inFocus: 'NONE',
   },
-  modal: {  
+  modal: {
     modal: false,
     modalDisplay: 'NONE',
   },
