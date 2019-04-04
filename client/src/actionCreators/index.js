@@ -5,7 +5,7 @@
 
 function checkWidth() {
   const action = {
-    action: 'CHECK_WIDTH',
+    type: 'CHECK_WIDTH',
     width: window.innerWidth,
   };
   return action;
@@ -13,20 +13,20 @@ function checkWidth() {
 
 function focusImage(index) {
   const action = {
-    action: 'FOCUS_IMAGE',
+    type: 'FOCUS_IMAGE',
     viewpane: index,
   };
   return action;
 }
 
 function defocusAll() {
-  const action = { action: 'DEFOCUS_ALL' };
+  const action = { type: 'DEFOCUS_ALL' };
   return action;
 }
 
 function toggleModal(index = 0) {
   const action = {
-    action: 'TOGGLE_MODAL',
+    type: 'TOGGLE_MODAL',
     modalDisplay: index,
   }
   return action;
@@ -34,7 +34,7 @@ function toggleModal(index = 0) {
 
 function modalSelect(display = 0) {
   const action = {
-    action: 'MODAL_SELECT',
+    type: 'MODAL_SELECT',
     modalDisplay: display,
   }
   return action;
