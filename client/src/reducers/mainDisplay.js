@@ -6,6 +6,8 @@
 // TODO:
 // Write a reducer that accepts the following actions and handles them accordingly:
 
+function mainDisplay() {
+
 // CHECK_WIDTH
 // payload: [window.innerWidth]
 // affects: mainDisplayMode: {'FULLSIZE'|'MIDSIZE'|'COMPACT'}
@@ -17,3 +19,7 @@
 // DEFOCUS_ALL
 // no payload
 // affects: inFocus: {'NONE'}
+
+}
+
+export default mainDisplay;

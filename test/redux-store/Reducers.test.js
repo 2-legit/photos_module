@@ -3,16 +3,41 @@
  * Tests reducers for use with Redux stores
  */
 
-// import photoApp from '../../client/reducers/index';
-// import actionCreators from '../../client/actionCreators/index';
+import photoApp from '../../client/src/reducers/index';
+import actionCreators from '../../client/src/actionCreators/index';
 
-// Create an initialState object to be the initial state
+// Destructure action creator functions from actionCreators
+const { checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
+
+const initialState = {
+  photos: [],
+  displayMode: 'COMPACT',
+  inFocus: 'NONE',
+  modal: false,
+  modalDisplay: 'NONE',
+};
+
+// Create a function to produce a state object with properties mapped to arguments
+function mockState(photos, displayMode, inFocus, modal, modalDisplay) {
+  const state = {
+    photos: photos || [],
+    displayMode: displayMode || 'COMPACT',
+    inFocus: inFocus || 'NONE',
+    modal: typeof modal === Boolean ? modal : false,
+    modalDisplay: modalDisplay || 'NONE',
+  }
+  return state;
+}
 
 // Describe: default reducer behaviors
+describe('default reducer behaviors', () => {
   // test: should set state to initial state if state is undefined
-    // pass into photoApp null and an action
-    // assert that the return value and the initialState have the same shape
-    // assert that the return value and the initialState hold the same values
+  test('should set state to initial state if state is undefined', () => {
+    // pass into photoApp null
+    const newState = photoApp(null, null);
+    // assert that the return value and the initialState are deeply equal
+    expect(newState).toEqual(initialState);
+  });
 
   // test: should return previous state if reducer was passed an invalid action
     // pass into photoApp a working state and an invalid action object
@@ -26,6 +51,7 @@
   // test: returns the input state only if no actions were taken
     // pass into photoApp a working state and null
     // assert that the return value and declared state object are the same object
+});
 
 // Describe: mainDisplay
 
