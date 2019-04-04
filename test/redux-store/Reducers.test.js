@@ -24,7 +24,6 @@ function mockState(photos, displayMode, inFocus, modal, modalDisplay) {
   return state;
 }
 
-// Describe: default reducer behaviors
 describe('default reducer behaviors', () => {
   test('should set state to initial state if state is undefined', () => {
     const newState = photoApp();
@@ -52,7 +51,6 @@ describe('default reducer behaviors', () => {
 });
 
 describe('mainDisplay', () => {
-
   describe('CHECK_WIDTH', () => {
     test('should save to state \'FULLSIZE\' for widths greater than 1200px', () => {
       window.innerWidth = 1300;
@@ -74,12 +72,10 @@ describe('mainDisplay', () => {
       const newState = photoApp(undefined, CHECK_WIDTH);
       expect(newState.mainDisplay.displayMode).toEqual('COMPACT');
     });
-
   });
 
   
   describe('FOCUS_IMAGE', () => {
-    
     test('should save the given number to the inFocus property', () => {
       const index = 3;
       const FOCUS_IMAGE = focusImage(index);
@@ -87,7 +83,6 @@ describe('mainDisplay', () => {
       expect(newState.mainDisplay.inFocus).toEqual(index);
     });
 
-    
     test('should only work for integers between 0 and 4 for displayMode \'FULLSIZE\'', () => {
       window.innerWidth = 1600;
       let CHECK_WIDTH = checkWidth();
@@ -104,7 +99,6 @@ describe('mainDisplay', () => {
       expect(newState.mainDisplay.inFocus).toEqual('NONE');
     });
 
-    
     test('should only work for integers between 0 and 2 for displayMode \'MIDSIZE\'', () => {
       window.innerWidth = 1000;
       let CHECK_WIDTH = checkWidth();
@@ -121,7 +115,6 @@ describe('mainDisplay', () => {
       expect(newState.mainDisplay.inFocus).toEqual('NONE');
     });
 
-    
     test('should not work for displayMode \'COMPACT\'', () => {
       window.innerWidth = 700;
       const CHECK_WIDTH = checkWidth();
@@ -133,9 +126,7 @@ describe('mainDisplay', () => {
     });
   });
 
-  
   describe('DEFOCUS_ALL', () => {
-    
     test('should save to inFocus property \'NONE\'', () => {
       const DEFOCUS_ALL = defocusAll();
       const workingState = mockState([{}], 'FULLSIZE', 3, false, 'NONE');
