@@ -6,17 +6,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-test('should have access to document object', () => {
-  expect(typeof document).toBe('object');
-});
+import App from '../../client/src/components/App';
 
-test('should have access to enzyme', () => {
-  expect(typeof shallow).toBe('function');
-});
+describe('App component', () => {
 
-test('should be able to mock-render jsx expressions', () => {
-  const element = shallow(<h1>Hello world!</h1>);
+  test('should contain text', () => {
+    const element = shallow(<App />);
 
-  expect(element).not.toBe(null);
-  expect(element.text()).toBe("Hello world!");
+    expect(element).not.toBe(null);
+    expect(element.text()).toBe("Hello world!");
+  });
+
 });
