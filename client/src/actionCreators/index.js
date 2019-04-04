@@ -28,7 +28,7 @@ function toggleModal(index = 0) {
   const action = {
     type: 'TOGGLE_MODAL',
     modalDisplay: index,
-  }
+  };
   return action;
 }
 
@@ -36,7 +36,7 @@ function modalSelect(display = 0) {
   const action = {
     type: 'MODAL_SELECT',
     modalDisplay: display,
-  }
+  };
   return action;
 }
 
