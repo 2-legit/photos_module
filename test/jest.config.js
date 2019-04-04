@@ -22,6 +22,6 @@ module.exports = {
 
   transformIgnorePatterns: ['<rootDir>/../node_modules/'],
   
-  verbose: false,
+  verbose: true,
 
 };
