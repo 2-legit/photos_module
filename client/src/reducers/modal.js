@@ -12,7 +12,6 @@ const initialState = {
 };
 
 function modal(state = initialState) {
-
   // TOGGLE_MODAL
   // payload: [display (Number)]
   // affects: modalDisplay: {|0 - state.photos.length-1|}
@@ -21,11 +20,10 @@ function modal(state = initialState) {
   // payload: [display (Number|String)]
   // affects: modalDisplay: {|0 - state.photos.length-1|}
   // conditions:
-    // (Number) must be between 0 and photos.length - 1
-    // (String) must be 'NEXT' or 'PREV'
-  
-  return state;
+  // (Number) must be between 0 and photos.length - 1
+  // (String) must be 'NEXT' or 'PREV'
 
+  return state;
 }
 
 export default modal;
