@@ -13,11 +13,15 @@ const { checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionC
 // Create a function to produce a state object with properties mapped to arguments
 function mockState(photos, displayMode, inFocus, modal, modalDisplay) {
   const state = {
-    photos: photos || [],
-    displayMode: displayMode || 'COMPACT',
-    inFocus: inFocus || 'NONE',
-    modal: typeof modal === Boolean ? modal : false,
-    modalDisplay: modalDisplay || 'NONE',
+    mainDisplay: {
+      photos: photos || [],
+      displayMode: displayMode || 'COMPACT',
+      inFocus: inFocus || 'NONE',
+    },
+    modal: {  
+      modal: typeof modal === Boolean ? modal : false,
+      modalDisplay: modalDisplay || 'NONE',
+    },
   }
   return state;
 }
@@ -32,19 +36,37 @@ describe('default reducer behaviors', () => {
     expect(newState).toEqual(initialState);
   });
 
-  // test: should not mutate the input state
-    // pass into photoApp a working state and a valid object
-    // assert that the return value and the declared state object are not the same object
-
-  // test: returns the input state if no actions were taken
+  // test: should return the input state if no actions were taken
+  test('should return the input state if no actions were taken', () => {
+    // create a working state object
+    const workingState = mockState([{}], 'FULLSIZE', 0, false, 'NONE');
     // pass into photoApp a working state and null
+    const newState = photoApp(workingState, null);
     // assert that the return value and declared state object are the same object
+    expect(newState).toBe(workingState);
+  });
 
   // test: should return previous state if reducer was passed an invalid action
+  test('should return previous state if reducer was passed an invalid action', () => {
+    // create a working state object
+    const workingState = mockState([{}], 'FULLSIZE', 0, false, 'NONE');
     // pass into photoApp a working state and an invalid action object
+    const newState = photoApp(workingState, { type: 'INVALID', payload: 'oops' });
     // assert that the return value and declared state object are the same object
-    // assert that the return value and declared state object have the same values
+    expect(newState).toBe(workingState);
   });
+
+  // test: should not mutate the input state
+  test('should not mutate the input state', () => {
+    // create a working state object
+    const workingState = mockState([{}], 'FULLSIZE', 0, false, 'NONE');
+    // pass into photoApp a working state and a valid action object
+    const newState = photoApp(workingState, { type: 'DEFOCUS_ALL' });
+    // assert that the return value and the declared state object are not the same object
+    expect(newState).not.toBe(workingState);
+  });
+
+});
 
 // Describe: mainDisplay
 
