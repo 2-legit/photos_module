@@ -4,13 +4,13 @@ module.exports = {
 
   collectCoverage: true,
 
-  collectCoverageFrom: ['<rootDir>/../client/src/**/*.{js,jsx,mjs}'],
+  collectCoverageFrom: ['<rootDir>/client/src/**/*.{js,jsx,mjs}'],
 
-  coverageDirectory: '<rootDir>/../coverage',
+  coverageDirectory: '<rootDir>/coverage',
 
   moduleFileExtensions: ['js', 'json', 'jsx'],
 
-  setupFiles: ['<rootDir>/enzyme.config.js'],
+  setupFiles: ['<rootDir>/test/enzyme.config.js'],
 
   testEnvironment: 'jsdom',
 
@@ -20,7 +20,7 @@ module.exports = {
 
   testURL: 'http://localhost',
 
-  transformIgnorePatterns: ['<rootDir>/../node_modules/'],
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
   
   verbose: true,
 
