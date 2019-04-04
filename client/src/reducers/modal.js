@@ -6,6 +6,8 @@
 // TODO:
 // Write a reducer that accepts the following actions and handles them accordingly:
 
+function modal() {
+
 // TOGGLE_MODAL
 // payload: [display (Number)]
 // affects: modalDisplay: {|0 - state.photos.length-1|}
@@ -16,3 +18,7 @@
 // conditions:
   // (Number) must be between 0 and photos.length - 1
   // (String) must be 'NEXT' or 'PREV'
+
+}
+
+export default modal;
