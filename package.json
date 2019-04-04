@@ -13,10 +13,10 @@
     "seed": "node data/seed.js",
     "eslint": "eslint .; exit 0",
     "eslint:fix": "eslint . --fix; exit 0",
-    "test:server": "jest ./test/server.test.js --coverage",
-    "test:client": "webpack -d --config webpack.test.config.js; jest ./test/compiled/ --coverage"
+    "jest": "jest --config=./test/jest.config.js --coverage"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "mysql": "^2.16.0",
@@ -47,10 +47,5 @@
     "jest-enzyme": "^7.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "./node_modules/jest-enzyme/lib/index.js"
-    ]
   }
 }
