@@ -10,8 +10,6 @@ module.exports = {
 
   setupFiles: ['<rootDir>/enzyme.config.js'],
 
-  //setupFilesAfterEnv: ["../node_modules/jest-enzyme/lib/index.js"],
-
   testEnvironment: 'jsdom',
 
   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
