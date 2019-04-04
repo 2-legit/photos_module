@@ -5,17 +5,10 @@
 
 import photoApp from '../../client/src/reducers/index';
 import actionCreators from '../../client/src/actionCreators/index';
+import initialState from '../../client/src/reducers/initialState';
 
 // Destructure action creator functions from actionCreators
 const { checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
-
-const initialState = {
-  photos: [],
-  displayMode: 'COMPACT',
-  inFocus: 'NONE',
-  modal: false,
-  modalDisplay: 'NONE',
-};
 
 // Create a function to produce a state object with properties mapped to arguments
 function mockState(photos, displayMode, inFocus, modal, modalDisplay) {
@@ -34,24 +27,24 @@ describe('default reducer behaviors', () => {
   // test: should set state to initial state if state is undefined
   test('should set state to initial state if state is undefined', () => {
     // pass into photoApp null
-    const newState = photoApp(null, null);
+    const newState = photoApp();
     // assert that the return value and the initialState are deeply equal
     expect(newState).toEqual(initialState);
   });
+
+  // test: should not mutate the input state
+    // pass into photoApp a working state and a valid object
+    // assert that the return value and the declared state object are not the same object
+
+  // test: returns the input state if no actions were taken
+    // pass into photoApp a working state and null
+    // assert that the return value and declared state object are the same object
 
   // test: should return previous state if reducer was passed an invalid action
     // pass into photoApp a working state and an invalid action object
     // assert that the return value and declared state object are the same object
     // assert that the return value and declared state object have the same values
-
-  // test: must not mutate the input state
-    // pass into photoApp a working state and a valid object
-    // assert that the return value and the declared state object are not the same object
-
-  // test: returns the input state only if no actions were taken
-    // pass into photoApp a working state and null
-    // assert that the return value and declared state object are the same object
-});
+  });
 
 // Describe: mainDisplay
 

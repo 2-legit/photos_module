@@ -6,19 +6,27 @@
 // TODO:
 // Write a reducer that accepts the following actions and handles them accordingly:
 
-function mainDisplay() {
+const initialState = {
+  photos: [],
+  displayMode: 'COMPACT',
+  inFocus: 'NONE',
+};
 
-// CHECK_WIDTH
-// payload: [window.innerWidth]
-// affects: mainDisplayMode: {'FULLSIZE'|'MIDSIZE'|'COMPACT'}
+function mainDisplay(state = initialState) {
 
-// FOCUS_IMAGE
-// payload: [index]
-// affects: inFocus: {0|1|2|3|4|5}
+  // CHECK_WIDTH
+  // payload: [window.innerWidth]
+  // affects: mainDisplayMode: {'FULLSIZE'|'MIDSIZE'|'COMPACT'}
 
-// DEFOCUS_ALL
-// no payload
-// affects: inFocus: {'NONE'}
+  // FOCUS_IMAGE
+  // payload: [index]
+  // affects: inFocus: {0|1|2|3|4|5}
+
+  // DEFOCUS_ALL
+  // no payload
+  // affects: inFocus: {'NONE'}
+
+  return state;
 
 }
 

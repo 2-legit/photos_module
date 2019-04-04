@@ -6,18 +6,25 @@
 // TODO:
 // Write a reducer that accepts the following actions and handles them accordingly:
 
-function modal() {
+const initialState = {
+  modal: false,
+  modalDisplay: 'NONE',
+};
 
-// TOGGLE_MODAL
-// payload: [display (Number)]
-// affects: modalDisplay: {|0 - state.photos.length-1|}
+function modal(state = initialState) {
 
-// MODAL_SELECT
-// payload: [display (Number|String)]
-// affects: modalDisplay: {|0 - state.photos.length-1|}
-// conditions:
-  // (Number) must be between 0 and photos.length - 1
-  // (String) must be 'NEXT' or 'PREV'
+  // TOGGLE_MODAL
+  // payload: [display (Number)]
+  // affects: modalDisplay: {|0 - state.photos.length-1|}
+
+  // MODAL_SELECT
+  // payload: [display (Number|String)]
+  // affects: modalDisplay: {|0 - state.photos.length-1|}
+  // conditions:
+    // (Number) must be between 0 and photos.length - 1
+    // (String) must be 'NEXT' or 'PREV'
+  
+  return state;
 
 }
 
