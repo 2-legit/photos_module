@@ -5,10 +5,6 @@ module.exports = {
         "node": true
     },
     "extends": "airbnb-base",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
