@@ -92,20 +92,53 @@
 // Describe: modal
 
   // Describe: TOGGLE_MODAL
-    // test: should save to state (display)
+    // test: should save to state an index if passed a number
+      // create an action object TOGGLE_MODAL with index (number)
+      // pass into photoApp a state object and the action object
+      // assert that the new state's property is equal to index
+
+    // test: should default to 0 if the payload is invalid
+      // create an action object TOGGLE_MODAL with null
+      // pass into photoApp a state object and the action object
+      // assert that the new state's property is equal to 0
 
     // test: should toggle state boolean property
+      // create an action object TOGGLE_MODAL with null
+      // save a declared varable equal to the state's target property
+      // pass into photoApp a state object and the action object
+      // assert that the state's target property is a boolean
+      // assert that the state's target property is not equal to the declared variable
+      // save the target property's value to the declared variable
+      // pass into photoApp the new state object and the same action object
+      // assert that the state's target property is not equal to the declared variable
 
 
   // Describe: MODAL_SELECT
-    // test: should save to state (display)
-
-    // test: should set modalDisplay to the specified number when given a number
+    // test: should set modalDisplay to the specified index when given a number
+      // create an action object MODAL_SELECT with index (number)
+      // pass into photoApp a state object and the action object
+      // assert that the state's target property is equal to the index
 
     // test: should only work for numbers between 0 and photos.length - 1
+      // create an action object MODAL_SELECT with an index greater than photos.length - 1
+      // pass into photoApp a state object and the action object
+      // assert that the state's target property is equal to 0
 
     // test: should increment modalDisplay when given 'NEXT'
+      // create an action object MODAL_SELECT with a string 'NEXT'
+      // pass into photoApp a state object and the action object
+      // assert that the state's target property is greater than the previous state's property by 1
 
     // test: should decrement modalDisplay when given 'PREV'
+      // create an action object MODAL_SELECT with a string 'NEXT'
+      // pass into photoApp a state object and the action object
+      // assert that the state's target property is less than the previous state's property by 1
 
     // test: should not increment outside numbers 0 and the index of the last photo
+      // create an action object MODAL_SELECT with a string 'PREV'
+      // pass into photoApp a state object with the index set to 0 and the action object
+      // assert that the state's target property is 0
+
+      // create an action object MODAL_SELECT with a string 'NEXT'
+      // pass into photoApp a state object with the index set to photos.length-1 and the action object
+      // assert that the state's target property is photos.length-1
