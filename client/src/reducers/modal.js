@@ -7,23 +7,56 @@
 // Write a reducer that accepts the following actions and handles them accordingly:
 
 const initialState = {
+  photos: [],
   onScreen: false,
   photo: 'NONE',
 };
 
-function modal(state = initialState) {
-  // TOGGLE_MODAL
-  // payload: [display (Number)]
-  // affects: modalDisplay: {|0 - state.photos.length-1|}
+function modal(state = initialState, action) {
+  const TYPE = action !== undefined && action !== null ? action.type : 'INVALID';
 
-  // MODAL_SELECT
-  // payload: [display (Number|String)]
-  // affects: modalDisplay: {|0 - state.photos.length-1|}
-  // conditions:
-  // (Number) must be between 0 and photos.length - 1
-  // (String) must be 'NEXT' or 'PREV'
+  let newState;
+  let photos;
+  let onScreen;
+  let photo;
 
-  return state;
+  switch (TYPE) {
+    case 'ADD_PHOTOS':
+      photos = action.photos.slice();
+      newState = Object.assign({}, state, {
+        photos,
+      });
+      return newState;
+    case 'TOGGLE_MODAL':
+    // payload: [display (Number)]
+    // affects: modalDisplay: {|0 - state.photos.length-1|}
+      onScreen = !state.onScreen;
+
+      if (onScreen === true) {
+        if (action.photo > 0 && action.photo < state.photos.length) {
+          ({ photo } = action);
+        } else {
+          photo = 0;
+        }
+      } else {
+        photo = 'NONE';
+      }
+
+      newState = Object.assign({}, state, {
+        onScreen,
+        photo,
+      });
+      return newState;
+    case 'MODAL_SELECT':
+    // payload: [display (Number|String)]
+    // affects: modalDisplay: {|0 - state.photos.length-1|}
+    // conditions:
+    // (Number) must be between 0 and photos.length - 1
+    // (String) must be 'NEXT' or 'PREV'
+      return state;
+    default:
+      return state;
+  }
 }
 
 export default modal;

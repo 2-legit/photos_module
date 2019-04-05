@@ -6,16 +6,17 @@
 import photoApp from '../../client/src/reducers/index';
 import actionCreators from '../../client/src/actionCreators/index';
 
-const { checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
+const { addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
 
 function mockState(photos, displayMode, inFocus, modal, photo) {
   const state = {
     mainDisplay: {
-      photos: photos || [],
+      photos: photos !== undefined ? photos.slice(0, 5) : [],
       displayMode: displayMode || 'FULLSIZE',
       inFocus: inFocus || 'NONE',
     },
-    modal: {  
+    modal: {
+      photos: photos !== undefined ? photos.slice() : [],
       onScreen: typeof modal === "boolean" ? modal : false,
       photo: typeof photo === "number" ? photo : 'NONE',
     },
@@ -50,6 +51,29 @@ describe('default reducer behaviors', () => {
 });
 
 describe('mainDisplay', () => {
+  describe('ADD_PHOTOS', () => {
+    test('should save to state an array of photo objects', () => {
+      const inputArray = [{},{},{},{},{}];
+      const ADD_PHOTOS = addPhotos(inputArray);
+      const newState = photoApp(undefined, ADD_PHOTOS);
+      expect(newState.mainDisplay.photos.constructor).toBe(Array);
+      expect(typeof newState.mainDisplay.photos[0]).toBe('object');
+    });
+
+    test('should not store an array of length greater than 5', () => {
+      const ADD_PHOTOS = addPhotos(new Array(99));
+      const newState = photoApp(undefined, ADD_PHOTOS);
+      expect(newState.mainDisplay.photos.length).toBe(5);
+    });
+
+    test('should not store a reference to the input array', () => {
+      const inputPhotos = new Array(99);
+      const ADD_PHOTOS = addPhotos(inputPhotos);
+      const newState = photoApp(undefined, ADD_PHOTOS);
+      expect(newState.mainDisplay.photos).not.toBe(inputPhotos);
+    });
+  });
+
   describe('CHECK_WIDTH', () => {
     test('should save to state \'FULLSIZE\' for widths greater than 1200px', () => {
       window.innerWidth = 1300;
@@ -138,6 +162,23 @@ describe('mainDisplay', () => {
 
 // Describe: modal
 describe('modal', () => {
+
+  describe('ADD_PHOTOS', () => {
+    test('should save to state an array of photos', () => {
+      const inputArray = [{},{},{},{},{},{}];
+      const ADD_PHOTOS = addPhotos(inputArray);
+      const newState = photoApp(undefined, ADD_PHOTOS);
+      expect(newState.modal.photos.constructor).toBe(Array);
+      expect(typeof newState.modal.photos[0]).toEqual('object');
+    });
+
+    test('should not store a reference to the input array', () => {
+      const inputArray = new Array(99);
+      const ADD_PHOTOS = addPhotos(inputArray);
+      const newState = photoApp(undefined, ADD_PHOTOS);
+      expect(newState.modal.photos).not.toBe(inputArray);
+    });
+  });
 
   // Describe: TOGGLE_MODAL
   // test: should save to state an index if passed a number
@@ -269,14 +310,12 @@ describe('modal', () => {
     // assert that the state's target property is photos.length-1
     test('should not increment or decrement the photo property outside the photos array range', () => {
       let workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 10);
-      let verb = 'NEXT';
-      let MODAL_SELECT = modalSelect(verb);
+      let MODAL_SELECT = modalSelect('NEXT');
       let newState = photoApp(workingState, MODAL_SELECT);
       expect(newState.modal.photo).toEqual(workingState.modal.photo);
 
       workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 0);
-      verb = 'PREV';
-      MODAL_SELECT = modalSelect(verb);
+      MODAL_SELECT = modalSelect('PREV');
       newState = photoApp(workingState, MODAL_SELECT);
       expect(newState.modal.photo).toEqual(workingState.modal.photo);
     });
