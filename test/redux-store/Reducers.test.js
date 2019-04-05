@@ -278,7 +278,7 @@ describe('modal', () => {
     // create an action object MODAL_SELECT with an index greater than photos.length - 1
     // pass into photoApp a state object and the action object
     // assert that the state's target property is equal to 0
-    test('should only work for numbers in range of the photos property array', () => {
+    test('should default to 0 when number is outside the range of photos property array', () => {
       const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 0);
 
       let index = 1000;
@@ -325,15 +325,15 @@ describe('modal', () => {
     // pass into photoApp a state object with the index set to photos.length-1 and the action object
     // assert that the state's target property is photos.length-1
     test('should not increment or decrement the photo property outside the photos array range', () => {
-      let workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 10);
+      let workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 9);
       let MODAL_SELECT = modalSelect('NEXT');
       let newState = photoApp(workingState, MODAL_SELECT);
-      expect(newState.modal.photo).toEqual(workingState.modal.photo);
+      expect(newState.modal.photo).toEqual(workingState.modal.photos.length - 1);
 
       workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 0);
       MODAL_SELECT = modalSelect('PREV');
       newState = photoApp(workingState, MODAL_SELECT);
-      expect(newState.modal.photo).toEqual(workingState.modal.photo);
+      expect(newState.modal.photo).toEqual(0);
     });
   });
 });
