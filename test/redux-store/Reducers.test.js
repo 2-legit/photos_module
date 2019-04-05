@@ -178,6 +178,23 @@ describe('modal', () => {
       const newState = photoApp(undefined, ADD_PHOTOS);
       expect(newState.modal.photos).not.toBe(inputArray);
     });
+
+    test('should have the same length as the input array', () => {
+      const length = 99;
+      const inputArray = new Array(length);
+      const ADD_PHOTOS = addPhotos(inputArray);
+      const newState = photoApp(undefined, ADD_PHOTOS);
+      expect(newState.modal.photos.length).toEqual(length);
+    });
+
+    test('should be different from the photos array under mainDisplay', () => {
+      const inputArray = new Array(20);
+      const ADD_PHOTOS = addPhotos(inputArray);
+      const newState = photoApp(undefined, ADD_PHOTOS);
+      expect(newState.mainDisplay.photos.length).not.toBe(null);
+      expect(newState.modal.photos.length).not.toBe(null);
+      expect(newState.modal.photos).not.toBe(newState.mainDisplay.photos);
+    })
   });
 
   // Describe: TOGGLE_MODAL

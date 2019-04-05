@@ -28,8 +28,6 @@ function modal(state = initialState, action) {
       });
       return newState;
     case 'TOGGLE_MODAL':
-    // payload: [display (Number)]
-    // affects: modalDisplay: {|0 - state.photos.length-1|}
       onScreen = !state.onScreen;
 
       if (onScreen === true) {
