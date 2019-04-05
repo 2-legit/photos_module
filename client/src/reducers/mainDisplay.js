@@ -13,10 +13,17 @@ function mainDisplay(state = initialState, action) {
   const TYPE = action !== undefined && action !== null ? action.type : 'INVALID';
 
   let newState;
+  let photos;
   let displayMode;
   let inFocus;
 
   switch (TYPE) {
+    case 'ADD_PHOTOS':
+      photos = action.photos.slice(0, 5);
+      newState = Object.assign({}, state, {
+        photos,
+      });
+      return newState;
     case 'CHECK_WIDTH':
       if (action.width >= 1200) {
         displayMode = 'FULLSIZE';

@@ -6,7 +6,7 @@
 function addPhotos(photos) {
   const action = {
     type: 'ADD_PHOTOS',
-    photos: photos,
+    photos,
   };
   return action;
 }
@@ -35,7 +35,7 @@ function defocusAll() {
 function toggleModal(index = 0) {
   const action = {
     type: 'TOGGLE_MODAL',
-    modalDisplay: index,
+    photo: index,
   };
   return action;
 }
@@ -43,7 +43,7 @@ function toggleModal(index = 0) {
 function modalSelect(display = 0) {
   const action = {
     type: 'MODAL_SELECT',
-    modalDisplay: display,
+    photo: display,
   };
   return action;
 }
