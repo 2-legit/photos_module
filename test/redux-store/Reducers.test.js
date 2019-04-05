@@ -85,7 +85,7 @@ describe('mainDisplay', () => {
 
     test('should only work for integers between 0 and 4 for displayMode \'FULLSIZE\'', () => {
       window.innerWidth = 1600;
-      let CHECK_WIDTH = checkWidth();
+      const CHECK_WIDTH = checkWidth();
       let newState = photoApp(undefined, CHECK_WIDTH);
 
       let index = 4;
@@ -101,7 +101,7 @@ describe('mainDisplay', () => {
 
     test('should only work for integers between 0 and 2 for displayMode \'MIDSIZE\'', () => {
       window.innerWidth = 1000;
-      let CHECK_WIDTH = checkWidth();
+      const CHECK_WIDTH = checkWidth();
       let newState = photoApp(undefined, CHECK_WIDTH);
 
       let index = 2;
@@ -118,9 +118,10 @@ describe('mainDisplay', () => {
     test('should not work for displayMode \'COMPACT\'', () => {
       window.innerWidth = 700;
       const CHECK_WIDTH = checkWidth();
+      let newState = photoApp(undefined, CHECK_WIDTH);
+
       const index = 2;
       const FOCUS_IMAGE = focusImage(index);
-      let newState = photoApp(undefined, CHECK_WIDTH);
       newState = photoApp(newState, FOCUS_IMAGE);
       expect(newState.mainDisplay.inFocus).toEqual('NONE');
     });
