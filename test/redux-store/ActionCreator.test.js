@@ -5,10 +5,11 @@
 
 import actionCreators from '../../client/src/actionCreators/index';
 
-const { addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
+const {
+  addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect,
+} = actionCreators;
 
 describe('addPhotos', () => {
-  
   test('should be a function', () => {
     expect(typeof addPhotos).toBe('function');
   });
@@ -25,11 +26,9 @@ describe('addPhotos', () => {
 
     expect(action.photos.constructor).toBe(Array);
   });
-
 });
 
 describe('checkWidth', () => {
-
   test('should be a function', () => {
     expect(typeof checkWidth).toBe('function');
   });
@@ -46,11 +45,9 @@ describe('checkWidth', () => {
 
     expect(action.width).toEqual(window.innerWidth);
   });
-
 });
 
 describe('focusImage', () => {
-
   test('should be a function', () => {
     expect(typeof focusImage).toBe('function');
   });
@@ -67,11 +64,9 @@ describe('focusImage', () => {
 
     expect(action.viewpane).toEqual(3);
   });
-
 });
 
 describe('defocusAll', () => {
-
   test('should be a function', () => {
     expect(typeof defocusAll).toBe('function');
   });
@@ -82,11 +77,9 @@ describe('defocusAll', () => {
     expect(typeof action).toBe('object');
     expect(action.type).toBe('DEFOCUS_ALL');
   });
-
 });
 
 describe('toggleModal', () => {
-
   test('should be a function', () => {
     expect(typeof toggleModal).toBe('function');
   });
@@ -109,11 +102,9 @@ describe('toggleModal', () => {
 
     expect(action.photo).toEqual(0);
   });
-
 });
 
 describe('modalSelect', () => {
-
   test('should be a function', () => {
     expect(typeof modalSelect).toBe('function');
   });
@@ -146,5 +137,4 @@ describe('modalSelect', () => {
 
     expect(action.photo).toEqual('PREV');
   });
-
 });
