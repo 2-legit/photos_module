@@ -161,7 +161,6 @@ describe('mainDisplay', () => {
   });
 });
 
-// Describe: modal
 describe('modal', () => {
   describe('ADD_PHOTOS', () => {
     test('should save to state an array of photos', () => {
@@ -194,14 +193,9 @@ describe('modal', () => {
       expect(newState.mainDisplay.photos.length).not.toBe(null);
       expect(newState.modal.photos.length).not.toBe(null);
       expect(newState.modal.photos).not.toBe(newState.mainDisplay.photos);
-    })
+    });
   });
 
-  // Describe: TOGGLE_MODAL
-  // test: should save to state an index if passed a number
-  // create an action object TOGGLE_MODAL with index (number)
-  // pass into photoApp a state object and the action object
-  // assert that the new state's property is equal to index
   describe('TOGGLE_MODAL', () => {
     test('should save to state an index if passed a number', () => {
       const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', false, 'NONE');
@@ -211,10 +205,6 @@ describe('modal', () => {
       expect(newState.modal.photo).toBe(index);
     });
 
-    // test: should default to 0 if the payload is invalid
-    // create an action object TOGGLE_MODAL with a negative number
-    // pass into photoApp a state object and the action object
-    // assert that the new state's property is equal to 0
     test('should default to 0 if no index was passed', () => {
       const TOGGLE_MODAL = toggleModal();
       const newState = photoApp(undefined, TOGGLE_MODAL);
@@ -240,15 +230,6 @@ describe('modal', () => {
       expect(newState.modal.photo).toBe('NONE');
     });
 
-    // test: should toggle state boolean property
-    // create an action object TOGGLE_MODAL with null
-    // save a declared varable equal to the state's target property
-    // pass into photoApp a state object and the action object
-    // assert that the state's target property is a boolean
-    // assert that the state's target property is not equal to the declared variable
-    // save the target property's value to the declared variable
-    // pass into photoApp the new state object and the same action object
-    // assert that the state's target property is not equal to the declared variable
     test('should toggle state boolean property', () => {
       const TOGGLE_MODAL = toggleModal();
 
@@ -260,12 +241,7 @@ describe('modal', () => {
     });
   });
 
-  // Describe: MODAL_SELECT
   describe('MODAL_SELECT', () => {
-    // test: should set modalDisplay to the specified index when given a number
-    // create an action object MODAL_SELECT with index (number)
-    // pass into photoApp a state object and the action object
-    // assert that the state's target property is equal to the index
     test('should set photo property to the specified index when given a number', () => {
       const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 0);
       const index = 5;
@@ -274,10 +250,6 @@ describe('modal', () => {
       expect(newState.modal.photo).toEqual(index);
     });
 
-    // test: should only work for numbers between 0 and photos.length - 1
-    // create an action object MODAL_SELECT with an index greater than photos.length - 1
-    // pass into photoApp a state object and the action object
-    // assert that the state's target property is equal to 0
     test('should default to 0 when number is outside the range of photos property array', () => {
       const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 0);
 
@@ -292,38 +264,20 @@ describe('modal', () => {
       expect(newState.modal.photo).toEqual(0);
     });
 
-    // test: should increment modalDisplay when given 'NEXT'
-    // create an action object MODAL_SELECT with a string 'NEXT'
-    // pass into photoApp a state object and the action object
-    // assert that the state's target property is greater than the previous state's property by 1
     test('should increment the photo property when given \'NEXT\'', () => {
       const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 0);
-      const verb = 'NEXT';
-      const MODAL_SELECT = modalSelect(verb);
+      const MODAL_SELECT = modalSelect('NEXT');
       const newState = photoApp(workingState, MODAL_SELECT);
       expect(newState.modal.photo).toEqual(workingState.modal.photo + 1);
     });
 
-    // test: should decrement modalDisplay when given 'PREV'
-    // create an action object MODAL_SELECT with a string 'NEXT'
-    // pass into photoApp a state object and the action object
-    // assert that the state's target property is less than the previous state's property by 1
     test('should decrement the photo property when given \'PREV\'', () => {
-      const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 10);
-      const verb = 'PREV';
-      const MODAL_SELECT = modalSelect(verb);
+      const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 9);
+      const MODAL_SELECT = modalSelect('PREV');
       const newState = photoApp(workingState, MODAL_SELECT);
       expect(newState.modal.photo).toEqual(workingState.modal.photo - 1);
     });
 
-    // test: should not increment outside numbers 0 and the index of the last photo
-    // create an action object MODAL_SELECT with a string 'PREV'
-    // pass into photoApp a state object with the index set to 0 and the action object
-    // assert that the state's target property is 0
-
-    // create an action object MODAL_SELECT with a string 'NEXT'
-    // pass into photoApp a state object with the index set to photos.length-1 and the action object
-    // assert that the state's target property is photos.length-1
     test('should not increment or decrement the photo property outside the photos array range', () => {
       let workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 9);
       let MODAL_SELECT = modalSelect('NEXT');
