@@ -12,7 +12,7 @@ const seedDatabase = (rooms) => {
     .then(() => { // Generate test instances in an array
       const array = [];
       for (let i = 0; i < rooms; i += 1) {
-        const numberOfPictures = randomNumber(10);
+        const numberOfPictures = randomNumber(10) + 4;
         for (let p = 0; p < numberOfPictures; p += 1) {
           array.push({
             list: p,
