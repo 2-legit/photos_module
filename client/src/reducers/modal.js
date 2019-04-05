@@ -7,8 +7,8 @@
 // Write a reducer that accepts the following actions and handles them accordingly:
 
 const initialState = {
-  modal: false,
-  modalDisplay: 'NONE',
+  onScreen: false,
+  photo: 'NONE',
 };
 
 function modal(state = initialState) {
