@@ -46,12 +46,37 @@ function modal(state = initialState, action) {
       });
       return newState;
     case 'MODAL_SELECT':
-    // payload: [display (Number|String)]
-    // affects: modalDisplay: {|0 - state.photos.length-1|}
-    // conditions:
-    // (Number) must be between 0 and photos.length - 1
-    // (String) must be 'NEXT' or 'PREV'
-      return state;
+
+      // if action.photo is 'NEXT' && state.photo > 0...
+      if (action.photo === 'NEXT') {
+        // save the value of the state property to variable `photo`
+        ({ photo } = state);
+        // state.photo is less than state.photos.length - 1, increment photo by one
+        if (state.photo < state.photos.length - 1) {
+          photo += 1;
+        }
+      // else if action.photo is 'PREV' && state.photo < state.photos.length...
+      } else if (action.photo === 'PREV') {
+        // save the vavlue of the state property to variable `photo`
+        ({ photo } = state);
+        // decrement photo by one
+        if (state.photo > 0) {
+          photo -= 1;
+        }
+      // else if action.photo < state.photos.length && action.photo > 0...
+      } else if (action.photo < state.photos.length && action.photo > 0) {
+        // destructure the photo property of the action object
+        ({ photo } = action);
+      // else
+      } else {
+        // save 0 to photo
+        photo = 0;
+      }
+
+      newState = Object.assign({}, state, {
+        photo,
+      });
+      return newState;
     default:
       return state;
   }
