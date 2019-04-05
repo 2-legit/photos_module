@@ -1,6 +1,6 @@
 /**
- * Client test script
- * Tests client functionality in a window-like environment with Enzyme testing suite
+ * Main App test file
+ * Tests App container component functionality and prop chaining
  */
 
 import React from 'react';
