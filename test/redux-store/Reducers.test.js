@@ -6,7 +6,9 @@
 import photoApp from '../../client/src/reducers/index';
 import actionCreators from '../../client/src/actionCreators/index';
 
-const { addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
+const {
+  addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect,
+} = actionCreators;
 
 function mockState(photos, displayMode, inFocus, modal, photo) {
   const state = {
@@ -17,10 +19,10 @@ function mockState(photos, displayMode, inFocus, modal, photo) {
     },
     modal: {
       photos: photos !== undefined ? photos.slice() : [],
-      onScreen: typeof modal === "boolean" ? modal : false,
-      photo: typeof photo === "number" ? photo : 'NONE',
+      onScreen: typeof modal === 'boolean' ? modal : false,
+      photo: typeof photo === 'number' ? photo : 'NONE',
     },
-  }
+  };
   return state;
 }
 
@@ -47,13 +49,12 @@ describe('default reducer behaviors', () => {
     const newState = photoApp(workingState, { type: 'DEFOCUS_ALL' });
     expect(newState).not.toBe(workingState);
   });
-
 });
 
 describe('mainDisplay', () => {
   describe('ADD_PHOTOS', () => {
     test('should save to state an array of photo objects', () => {
-      const inputArray = [{},{},{},{},{}];
+      const inputArray = [{}, {}, {}, {}, {}];
       const ADD_PHOTOS = addPhotos(inputArray);
       const newState = photoApp(undefined, ADD_PHOTOS);
       expect(newState.mainDisplay.photos.constructor).toBe(Array);
@@ -97,12 +98,12 @@ describe('mainDisplay', () => {
     });
   });
 
-  
+
   describe('FOCUS_IMAGE', () => {
     test('should save the given number to the inFocus property', () => {
       const index = 3;
       const FOCUS_IMAGE = focusImage(index);
-      let newState = photoApp(undefined, FOCUS_IMAGE);
+      const newState = photoApp(undefined, FOCUS_IMAGE);
       expect(newState.mainDisplay.inFocus).toEqual(index);
     });
 
@@ -131,8 +132,8 @@ describe('mainDisplay', () => {
       let FOCUS_IMAGE = focusImage(index);
       newState = photoApp(newState, FOCUS_IMAGE);
       expect(newState.mainDisplay.inFocus).toEqual(index);
-      
-      index = 4;     
+
+      index = 4;
       FOCUS_IMAGE = focusImage(index);
       newState = photoApp(newState, FOCUS_IMAGE);
       expect(newState.mainDisplay.inFocus).toEqual('NONE');
@@ -162,10 +163,9 @@ describe('mainDisplay', () => {
 
 // Describe: modal
 describe('modal', () => {
-
   describe('ADD_PHOTOS', () => {
     test('should save to state an array of photos', () => {
-      const inputArray = [{},{},{},{},{},{}];
+      const inputArray = [{}, {}, {}, {}, {}, {}];
       const ADD_PHOTOS = addPhotos(inputArray);
       const newState = photoApp(undefined, ADD_PHOTOS);
       expect(newState.modal.photos.constructor).toBe(Array);
@@ -241,7 +241,6 @@ describe('modal', () => {
       newState = photoApp(newState, TOGGLE_MODAL);
       expect(newState.modal.onScreen).toBe(false);
     });
-
   });
 
   // Describe: MODAL_SELECT
@@ -264,7 +263,7 @@ describe('modal', () => {
     // assert that the state's target property is equal to 0
     test('should only work for numbers in range of the photos property array', () => {
       const workingState = mockState(new Array(10), 'FULLSIZE', 'NONE', true, 0);
-      
+
       let index = 1000;
       let MODAL_SELECT = modalSelect(index);
       let newState = photoApp(workingState, MODAL_SELECT);
@@ -319,6 +318,5 @@ describe('modal', () => {
       newState = photoApp(workingState, MODAL_SELECT);
       expect(newState.modal.photo).toEqual(workingState.modal.photo);
     });
-
   });
 });
