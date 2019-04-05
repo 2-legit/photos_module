@@ -5,7 +5,28 @@
 
 import actionCreators from '../../client/src/actionCreators/index';
 
-const { checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
+const { addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect } = actionCreators;
+
+describe('addPhotos', () => {
+  
+  test('should be a function', () => {
+    expect(typeof addPhotos).toBe('function');
+  });
+
+  test('should return an action object', () => {
+    const action = addPhotos([]);
+
+    expect(typeof action).toBe('object');
+    expect(action.type).toBe('ADD_PHOTOS');
+  });
+
+  test('should send an array of photo objects as the payload', () => {
+    const action = addPhotos([]);
+
+    expect(action.photos.constructor).toBe(Array);
+  });
+
+});
 
 describe('checkWidth', () => {
 

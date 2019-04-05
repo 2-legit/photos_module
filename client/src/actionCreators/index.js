@@ -3,6 +3,14 @@
  * To be used in conjunction with dispatchers to inform the store to update
  */
 
+function addPhotos(photos) {
+  const action = {
+    type: 'ADD_PHOTOS',
+    photos: photos,
+  };
+  return action;
+}
+
 function checkWidth() {
   const action = {
     type: 'CHECK_WIDTH',
@@ -41,6 +49,7 @@ function modalSelect(display = 0) {
 }
 
 export default {
+  addPhotos,
   checkWidth,
   focusImage,
   defocusAll,
