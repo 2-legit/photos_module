@@ -1,14 +1,15 @@
 /**
  * Main display element test file
- * Tests wrappers for images to be held in the main display for the item detail page
+ * Tests MainDisplay container component as well as subcomponents
  */
 
 import React from 'react';
 import { shallow } from 'enzyme';
 
-// import PhotoWrapper from '../../client/src/components/PhotoWrapper';
-// import PhotoWrapperColumn from '../../client/src/components/PhotoWrapperColumn';
-// import PhotoWrapperRow from '../../client/src/components/PhotoWrapperRow';
+// import MainDisplay from '../../client/src/components/mainDisplay/index.jsx'
+// import PhotoWrapper from '../../client/src/components/mainDisplay/PhotoWrapper';
+// import PhotoWrapperColumn from '../../client/src/components/mainDisplay/PhotoWrapperColumn';
+// import PhotoWrapperRow from '../../client/src/components/mainDisplay/PhotoWrapperRow';
 
 describe('photo-wrapper component', () => {
   test('should have exactly one img tag as its child', () => {});
@@ -22,4 +23,7 @@ describe('photo-wrapper component', () => {
 
 describe('photo-wrapper-column component', () => {
   test('should collapse from view when given the prop collapse', () => {});
+});
+
+describe('main display component', () => {
 });
