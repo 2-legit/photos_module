@@ -58,19 +58,29 @@ describe('photo-wrapper component', () => {
     expect(wrapper.find('img').props()).toHaveProperty('style', styles);
   });
 
-  test('should change style when passed an inFocus prop', () => {
-    let styles = 'flex-grow: 1; overflow: hidden; margin: 1px; visibility: visible;';
-    let wrapper = shallow(<PhotoWrapper inFocus={'NONE'} id={4} />);
-    expect(wrapper.props()).toHaveProperty('style', styles);
-
-    styles = 'flex-grow: 1; overflow: hidden; margin: 1px; visibility: collapse;';
-    wrapper = shallow(<PhotoWrapper inFocus={2} id={4}/>);
-    expect(wrapper.props()).toHaveProperty('style', styles);
+  test('should have a styled component', () => {
+    const wrapper = shallow(<PhotoWrapper inFocus={'NONE'} id={4} />);
+    expect(wrapper.find('StyledWrapper')).toHaveLength(1);
   });
+
+  test('should adapt styling based on props', () => {
+    let wrapper = shallow(<PhotoWrapper inFocus={'NONE'} id={4} />);
+    expect(wrapper.props()).toHaveProperty('inFocus', 'NONE');
+
+    wrapper = shallow(<PhotoWrapper inFocus={2} id={4} />);
+    expect(wrapper.props()).toHaveProperty('inFocus', 2);
+  })
 });
 
 xdescribe('photo-wrapper-column component', () => {
-  test('should render children when passed in', () => {});
+  test('should render children when passed in', () => {
+    const wrapper = shallow(
+    <PhotoWrapperCol>
+      <div>Hello</div>
+      <div>world!</div>
+    </PhotoWrapperCol>
+    );
+  });
 
   test('should collapse from view when matching to key', () => {});
 });
