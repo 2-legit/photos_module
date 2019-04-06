@@ -10,7 +10,7 @@ import sinon from 'sinon';
 // import MainDisplay from '../../client/src/components/mainDisplay/MainDisplay.jsx';
 
 import PhotoWrapper from '../../client/src/components/mainDisplay/PhotoWrapper';
-// import PhotoWrapperColumn from '../../client/src/components/mainDisplay/PhotoWrapperColumn';
+import PhotoWrapperCol from '../../client/src/components/mainDisplay/PhotoWrapperCol';
 
 // import photos from '../../data/testPhotoData.js';
 
@@ -69,20 +69,27 @@ describe('photo-wrapper component', () => {
 
     wrapper = shallow(<PhotoWrapper inFocus={2} id={4} />);
     expect(wrapper.props()).toHaveProperty('inFocus', 2);
-  })
+  });
 });
 
-xdescribe('photo-wrapper-column component', () => {
+describe('photo-wrapper-column component', () => {
   test('should render children when passed in', () => {
     const wrapper = shallow(
-    <PhotoWrapperCol>
-      <div>Hello</div>
-      <div>world!</div>
-    </PhotoWrapperCol>
+      <PhotoWrapperCol>
+        <div>Hello</div>
+        <div>world!</div>
+      </PhotoWrapperCol>,
     );
+    expect(wrapper.find('Column').children()).toHaveLength(2);
   });
 
-  test('should collapse from view when matching to key', () => {});
+  test('should collapse from view when matching to order', () => {
+    let wrapper = shallow(<PhotoWrapperCol order={2} displayMode={2} />);
+    expect(wrapper.props()).toHaveProperty('displayMode', 2);
+
+    wrapper = shallow(<PhotoWrapperCol order={2} displayMode={1} />);
+    expect(wrapper.props()).toHaveProperty('displayMode', 1);
+  });
 });
 
 xdescribe('main display component', () => {

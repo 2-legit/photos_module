@@ -10,3 +10,7 @@ import { shallow } from 'enzyme';
 // import PhotoReel from '../../client/src/components/modal/PhotoReel.jsx';
 
 // import photos from '../../data/testPhotoData.js';
+
+describe('modal component', () => {
+  test('placeholder', () => {});
+});
