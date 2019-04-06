@@ -20,12 +20,20 @@
   */
 
   import React from 'react';
+  import styled from 'styled-components';
+
+  const StyledWrapper = styled.div`
+    flex-grow: 1;
+    overflow: hidden;
+    margin: 1px;
+    opacity: ${props => (props.inFocus === 'NONE' || props.inFocus === props.id) ? '1' : '0.5'};
+  `;
+
+  StyledWrapper.displayName = 'StyledWrapper';
 
   function PhotoWrapper(props) {
     return (
-      <div
-        style={`flex-grow: 1; overflow: hidden; margin: 1px; visibility: ${props.inFocus === 'NONE' || props.inFocus === props.id ? 'visible' : 'collapse'};`}
-      >
+      <StyledWrapper inFocus={props.inFocus} id={props.id}>
         <img
         style="width: 100%; height: 100%; object-fit: cover;"
         src={props.url}
@@ -33,7 +41,7 @@
         onMouseEnter={props.onPhotoHover}
         onMouseLeave={props.onPhotoLeave}
         />
-      </div>
+      </StyledWrapper>
     );
   }
 
