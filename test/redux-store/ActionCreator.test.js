@@ -1,6 +1,6 @@
 /**
  * Action Creator test script
- * Tests action creators for use with Redux stores
+ * Tests to make sure javascript is working
  */
 
 import actionCreators from '../../client/src/actionCreators/index';
