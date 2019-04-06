@@ -23,8 +23,11 @@
 
   function PhotoWrapper(props) {
     return (
-      <div>
+      <div
+        style={`flex-grow: 1; overflow: hidden; margin: 1px; visibility: ${props.inFocus === 'NONE' || props.inFocus === props.id ? 'visible' : 'collapse'};`}
+      >
         <img
+        style="width: 100%; height: 100%; object-fit: cover;"
         src={props.url}
         onClick={props.onPhotoClick}
         onMouseEnter={props.onPhotoHover}
