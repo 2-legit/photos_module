@@ -18,4 +18,20 @@
   *   100% width and height
   *   object-fit cover
   */
- 
+
+  import React from 'react';
+
+  function PhotoWrapper(props) {
+    return (
+      <div>
+        <img
+        src={props.url}
+        onClick={props.onPhotoClick}
+        onMouseEnter={props.onPhotoHover}
+        onMouseLeave={props.onPhotoLeave}
+        />
+      </div>
+    );
+  }
+
+  export default PhotoWrapper;

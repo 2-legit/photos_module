@@ -26,11 +26,9 @@
  *   1px top and bottom padding
  */
 
-
-  /**
-   * ASIDE: 
-   * 
-   * use window.addEventListener with the event "resize" to wire
-   * the dispatcher for checking width
-   */
-  
+/**
+ * ASIDE: 
+ * 
+ * use window.addEventListener with the event "resize" to wire
+ * the dispatcher for checking width
+ */
