@@ -1,6 +1,6 @@
 /**
- * Client test script
- * Tests client functionality in a window-like environment with Enzyme testing suite
+ * Main App test file
+ * Tests App container component functionality and prop chaining
  */
 
 import React from 'react';
@@ -9,10 +9,15 @@ import { shallow } from 'enzyme';
 import App from '../../client/src/components/App';
 
 describe('App component', () => {
-  test('should contain text', () => {
-    const element = shallow(<App />);
+  test('should contain a MainDisplay component', () => {
+    const wrapper = shallow(<App />);
 
-    expect(element).not.toBe(null);
-    expect(element.text()).toBe('Hello world!');
+    expect(wrapper.find('MainDisplay')).toHaveLength(1);
+  });
+
+  xtest('should contain a Modal component', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.find('Modal')).toHaveLength(1);
   });
 });
