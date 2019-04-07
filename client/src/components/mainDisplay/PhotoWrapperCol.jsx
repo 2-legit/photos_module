@@ -17,7 +17,7 @@ Column.displayName = 'Column';
 
 function PhotoWrapperCol(props) {
   return (
-    <Column displayMode={props.displayMode} order={props.key}>
+    <Column displayMode={props.displayMode} order={props.order}>
       {props.children}
     </Column>
   );
