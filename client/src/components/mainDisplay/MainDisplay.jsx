@@ -38,11 +38,11 @@ class MainDisplay extends React.Component {
       <Background>
         <FlexRow>
           <PhotoWrapper id={0} imageurl={this.props.photos[0]} />
-          <PhotoWrapperCol order={1}>
+          <PhotoWrapperCol order={1} displayMode={this.props.displayMode}>
             <PhotoWrapper id={1} imageurl={this.props.photos[1]} />
             <PhotoWrapper id={2} imageurl={this.props.photos[2]} />
           </PhotoWrapperCol>
-          <PhotoWrapperCol order={2}>
+          <PhotoWrapperCol order={2} displayMode={this.props.displayMode}>
             <PhotoWrapper id={3} imageurl={this.props.photos[3]} />
             <PhotoWrapper id={4} imageurl={this.props.photos[4]} />
           </PhotoWrapperCol>
