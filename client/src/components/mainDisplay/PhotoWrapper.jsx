@@ -35,8 +35,8 @@
     return (
       <StyledWrapper inFocus={props.inFocus} id={props.id}>
         <img
-        style="width: 100%; height: 100%; object-fit: cover;"
-        src={props.url}
+        style={{width: '100%', height: '100%', objectFit: 'cover'}}
+        src={props.imageurl}
         onClick={props.onPhotoClick}
         onMouseEnter={props.onPhotoHover}
         onMouseLeave={props.onPhotoLeave}
