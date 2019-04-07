@@ -48,7 +48,7 @@ function modalSelect(display = 0) {
   return action;
 }
 
-export default {
+export {
   addPhotos,
   checkWidth,
   focusImage,
