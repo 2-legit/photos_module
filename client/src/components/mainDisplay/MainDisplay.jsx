@@ -73,3 +73,4 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainDisplay);
+export const MainDisplayRaw = MainDisplay;
