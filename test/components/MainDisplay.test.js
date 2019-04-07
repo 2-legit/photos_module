@@ -7,8 +7,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-import MainDisplay from '../../client/src/components/mainDisplay/MainDisplay.jsx';
-import PhotoWrapper from '../../client/src/components/mainDisplay/PhotoWrapper';
+import { MainDisplayRaw as MainDisplay } from '../../client/src/components/mainDisplay/MainDisplay.jsx';
+import { PhotoWrapperRaw as PhotoWrapper } from '../../client/src/components/mainDisplay/PhotoWrapper';
 import PhotoWrapperCol from '../../client/src/components/mainDisplay/PhotoWrapperCol';
 
 import testPhotoData from '../../data/testPhotoData';

@@ -3,7 +3,7 @@
  * Tests to make sure javascript is working
  */
 
-import actionCreators from '../../client/src/actionCreators/index';
+import * as actionCreators from '../../client/src/actionCreators/index';
 
 const {
   addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect,

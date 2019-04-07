@@ -43,3 +43,4 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoWrapper);
+export const PhotoWrapperRaw = PhotoWrapper;
