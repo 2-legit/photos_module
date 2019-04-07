@@ -11,15 +11,16 @@ import PhotoWrapper from './PhotoWrapper.jsx';
 
 const Background = styled.div`
   width: 100%;
-  height: 30%;
+  height: 600px;
   background-color: #303030;
+  padding-top: 1px;
+  padding-bottom: 1px;
 `;
 
 const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  height: 100%;
 `;
 
 FlexRow.displayName = 'FlexRow';
