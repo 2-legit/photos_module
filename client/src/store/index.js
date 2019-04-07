@@ -4,6 +4,6 @@
  */
 
 import { createStore } from 'redux';
-import photoApp from '../reducers/index,js';
+import photoApp from '../reducers/index';
 
 export default createStore(photoApp);
