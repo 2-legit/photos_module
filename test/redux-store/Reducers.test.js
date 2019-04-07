@@ -4,11 +4,7 @@
  */
 
 import photoApp from '../../client/src/reducers/index';
-import actionCreators from '../../client/src/actionCreators/index';
-
-const {
-  addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect,
-} = actionCreators;
+import { addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect, } from '../../client/src/actionCreators/index';
 
 function mockState(photos, displayMode, inFocus, modal, photo) {
   const state = {

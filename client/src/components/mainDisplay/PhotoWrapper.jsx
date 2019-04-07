@@ -6,6 +6,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { connect } from 'react-redux';
+import { focusImage, defocusAll, toggleModal } from '../../actionCreators/index.js';
+
 const StyledWrapper = styled.div`
   flex-grow: 1;
   overflow: hidden;
@@ -21,12 +24,22 @@ function PhotoWrapper(props) {
       <img
       style={{width: '100%', height: '100%', objectFit: 'cover'}}
       src={props.imageurl}
-      onClick={props.onPhotoClick}
-      onMouseEnter={props.onPhotoHover}
+      onClick={() => props.onPhotoClick(props.id)}
+      onMouseEnter={() => props.onPhotoHover(props.id)}
       onMouseLeave={props.onPhotoLeave}
       />
     </StyledWrapper>
   );
 }
 
-export default PhotoWrapper;
+const mapStateToProps = ({ mainDisplay }) => ({
+  inFocus: mainDisplay.inFocus,
+});
+
+const mapDispatchToProps = {
+  onPhotoClick: toggleModal,
+  onPhotoHover: focusImage,
+  onPhotoLeave: defocusAll,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoWrapper);
