@@ -6,9 +6,7 @@
 /**
  * TODO:
  * 
- * Turn component into a container component
- * Map state to subcomponent props
- * Map dispatch to subcomponents
+ * Invoke MainDisplay component container and Modal component container
  * 
  * Write into the app component the following style properties:
  *   very dark gray background color
@@ -18,9 +16,11 @@
 
 import React from 'react';
 
+import MainDisplay from './mainDisplay/MainDisplay.jsx';
+
 function App() {
   return (
-    <h1>Hello world!</h1>
+    <MainDisplay photos={[]} />
   );
 }
 

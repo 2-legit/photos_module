@@ -7,26 +7,25 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-// import MainDisplay from '../../client/src/components/mainDisplay/MainDisplay.jsx';
-
+import MainDisplay from '../../client/src/components/mainDisplay/MainDisplay.jsx';
 import PhotoWrapper from '../../client/src/components/mainDisplay/PhotoWrapper';
 import PhotoWrapperCol from '../../client/src/components/mainDisplay/PhotoWrapperCol';
 
-// import photos from '../../data/testPhotoData.js';
+import testPhotoData from '../../data/testPhotoData';
 
 describe('photo-wrapper component', () => {
   test('should have exactly one img tag as its child', () => {
-    const wrapper = shallow(<PhotoWrapper url={'https://some.website.org'} />);
+    const wrapper = shallow(<PhotoWrapper />);
 
     expect(wrapper.find('img')).toHaveLength(1);
   });
 
-  test('should have a url prop', () => {
-    const url = 'https://not.arealweb.site';
+  test('should have an imageurl prop', () => {
+    const imageurl = 'https://not.arealweb.site';
 
-    const wrapper = shallow(<PhotoWrapper url={url} />);
+    const wrapper = shallow(<PhotoWrapper imageurl={imageurl} />);
 
-    expect(wrapper.find('img').props()).toHaveProperty('src', url);
+    expect(wrapper.find('img').props()).toHaveProperty('src', imageurl);
   });
 
   test('should invoke a handler onClick', () => {
@@ -51,7 +50,7 @@ describe('photo-wrapper component', () => {
   });
 
   test('should have styling for the child node', () => {
-    const styles = 'width: 100%; height: 100%; object-fit: cover;';
+    const styles = {width: '100%', height: '100%', objectFit: 'cover'};
 
     const wrapper = shallow(<PhotoWrapper />);
 
@@ -92,10 +91,33 @@ describe('photo-wrapper-column component', () => {
   });
 });
 
-xdescribe('main display component', () => {
-  test('should render child components', () => {});
+describe('main display component', () => {
+  const images = testPhotoData.map(image => image.imageurl).slice(0, 5);
 
-  test('should change display mode when resizing window', () => {});
+  test('should render child components', () => {
+    const wrapper = shallow(<MainDisplay photos={images}/>);
 
-  test('should pass down five photos in sequence', () => {});
+    expect(wrapper.find('PhotoWrapperCol')).toHaveLength(2);
+    expect(wrapper.find('PhotoWrapper')).toHaveLength(5);
+  });
+
+  test('should change display mode when resizing window', () => {
+    const onResize = sinon.spy();
+    const wrapper = shallow(<MainDisplay photos={images} onResize={onResize}/>);
+
+    global.innerWidth = 500;
+    global.dispatchEvent(new Event('resize'));
+    
+    expect(onResize).toHaveProperty('callCount', 1);
+  });
+
+  test('should pass down image urls to photowrappers', () => {
+    const url = images[0];
+    const wrapper = shallow(<MainDisplay photos={images} />);
+
+    const allPhotoWrappers = wrapper.find('PhotoWrapper');
+    allPhotoWrappers.forEach(node => {
+      expect(node.props()).toHaveProperty('imageurl', url)
+    })
+  });
 });

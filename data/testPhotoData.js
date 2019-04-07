@@ -1,4 +1,4 @@
-const photos = [
+const testPhotoData = [
   {
     id: 292,
     list: 0,
@@ -71,4 +71,4 @@ const photos = [
   },
 ];
 
-export default photos;
+export default testPhotoData;
