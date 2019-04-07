@@ -50,7 +50,7 @@ describe('photo-wrapper component', () => {
   });
 
   test('should have styling for the child node', () => {
-    const styles = {width: '100%', height: '100%', objectFit: 'cover'};
+    const styles = { width: '100%', height: '100%', objectFit: 'cover' };
 
     const wrapper = shallow(<PhotoWrapper />);
 
@@ -107,7 +107,7 @@ describe('main display component', () => {
 
     global.innerWidth = 500;
     global.dispatchEvent(new Event('resize'));
-    
+
     expect(onResize).toHaveProperty('callCount', 1);
   });
 
@@ -116,8 +116,8 @@ describe('main display component', () => {
     const wrapper = shallow(<MainDisplay photos={images} />);
 
     const allPhotoWrappers = wrapper.find('PhotoWrapper');
-    allPhotoWrappers.forEach(node => {
-      expect(node.props()).toHaveProperty('imageurl', url)
-    })
+    allPhotoWrappers.forEach((node) => {
+      expect(node.props()).toHaveProperty('imageurl', url);
+    });
   });
 });

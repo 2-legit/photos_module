@@ -19,5 +19,5 @@ describe('App component', () => {
     const wrapper = shallow(<App />);
 
     expect(wrapper.find('Modal')).toHaveLength(1);
-  })
+  });
 });
