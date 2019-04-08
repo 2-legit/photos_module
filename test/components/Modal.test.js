@@ -7,10 +7,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
-// import Modal from '../../client/src/components/modal/Modal.jsx';
-import PhotoReel from '../../client/src/components/modal/PhotoReel.jsx';
+import { ModalRaw as Modal } from '../../client/src/components/modal/Modal.jsx';
+import { PhotoReelRaw as PhotoReel } from '../../client/src/components/modal/PhotoReel.jsx';
 import {
-  Close, Next, Prev, PhotoNav,
+  Close,
+  Next,
+  Prev,
+  PhotoNav,
 } from '../../client/src/components/modal/Buttons.jsx';
 
 import testPhotoData from '../../data/testPhotoData';
@@ -79,7 +82,7 @@ describe('buttons', () => {
 });
 
 describe('photo reel component', () => {
-  test('should have specific subcomponent structure', () => {
+  test('should have specific subcomponents', () => {
     const wrapper = shallow(<PhotoReel photos={[]}/>);
     expect(wrapper.find('FlexRow')).toHaveLength(1);
     expect(wrapper.find('Next')).toHaveLength(1);
@@ -94,4 +97,13 @@ describe('photo reel component', () => {
   });
 });
 
-xdescribe('modal component', () => {});
+describe('modal component', () => {
+  test('should have specific subcomponents', () => {
+    const wrapper = shallow(<Modal photos={testPhotoData} />);
+    expect(wrapper.find('Fullscreen')).toHaveLength(1);
+    expect(wrapper.find('FlexColumn')).toHaveLength(1);
+    expect(wrapper.find('Close')).toHaveLength(1);
+    expect(wrapper.find('PhotoWrapper')).toHaveLength(1);
+    expect(wrapper.find('Description')).toHaveLength(1);
+  });
+});
