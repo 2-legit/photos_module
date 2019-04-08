@@ -11,6 +11,10 @@ import photos from '../../../data/testPhotoData';
 
 const imageurls = photos.map(image => image.imageurl);
 
+import photos from '../../../data/testPhotoData.js';
+
+const imageurls = photos.map(image => image.imageurl);
+
 function App() {
   return (
     <MainDisplay photos={imageurls} displayMode={2} />
