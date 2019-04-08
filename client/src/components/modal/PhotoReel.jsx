@@ -25,6 +25,7 @@ const ScrollBox = styled.div`
   justify-content: space-between;
   overflow-x: auto;
   scroll-behavior: smooth;
+  padding-bottom: 17px;
 `;
 
 ScrollBox.displayName = 'ScrollBox';
