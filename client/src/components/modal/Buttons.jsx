@@ -34,21 +34,23 @@ const ArrowButton = styled.button`
 
 export function Next(props) {
   return (
+    <a href={`#nav-${props.photo + 1}`}>
     <ArrowButton
     // img={}
     onClick={() => props.onButtonClick('NEXT')}
-    href={`#nav-${props.photo + 1}`}
     />
+    </a>
   );
 }
 
 export function Prev(props) {
   return (
+    <a href={`#nav-${props.photo - 1}`}>
     <ArrowButton
     // img={}
     onClick={() => props.onButtonClick('PREV')}
-    href={`#nav-${props.photo - 1}`}
     />
+    </a>
   );
 }
 
@@ -56,12 +58,18 @@ const PhotoWrapper = styled.div`
   width: 100px;
   height: 70px;
   overflow: hidden;
+  opacity: ${props => props.current === props.photo ? 1 : 0.5}
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 export function PhotoNav(props) {
   return (
     <PhotoWrapper
-    href={`#nav-${props.photo}`}
+    current={props.current}
+    photo={props.photo}
     id={`nav-${props.photo}`}
     onClick={() => props.onButtonClick(props.photo)}
     >

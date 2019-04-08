@@ -11,14 +11,14 @@ import {
 function mockState(photos, displayMode, inFocus, modal, photo) {
   const state = {
     mainDisplay: {
-      photos: photos !== undefined ? photos.slice(0, 5) : [],
+      mainPhotos: photos !== undefined ? photos.slice(0, 5) : [],
       displayMode: displayMode || 'FULLSIZE',
       inFocus: inFocus || 'NONE',
     },
     modal: {
       photos: photos !== undefined ? photos.slice() : [],
       onScreen: typeof modal === 'boolean' ? modal : false,
-      photo: typeof photo === 'number' ? photo : 'NONE',
+      photo: typeof photo === 'number' ? photo : 0,
     },
   };
   return state;
@@ -55,21 +55,21 @@ describe('mainDisplay', () => {
       const inputArray = [{}, {}, {}, {}, {}];
       const ADD_PHOTOS = addPhotos(inputArray);
       const newState = photoApp(undefined, ADD_PHOTOS);
-      expect(newState.mainDisplay.photos.constructor).toBe(Array);
-      expect(typeof newState.mainDisplay.photos[0]).toBe('object');
+      expect(newState.mainDisplay.mainPhotos.constructor).toBe(Array);
+      expect(typeof newState.mainDisplay.mainPhotos[0]).toBe('object');
     });
 
     test('should not store an array of length greater than 5', () => {
       const ADD_PHOTOS = addPhotos(new Array(99));
       const newState = photoApp(undefined, ADD_PHOTOS);
-      expect(newState.mainDisplay.photos.length).toBe(5);
+      expect(newState.mainDisplay.mainPhotos.length).toBe(5);
     });
 
     test('should not store a reference to the input array', () => {
       const inputPhotos = new Array(99);
       const ADD_PHOTOS = addPhotos(inputPhotos);
       const newState = photoApp(undefined, ADD_PHOTOS);
-      expect(newState.mainDisplay.photos).not.toBe(inputPhotos);
+      expect(newState.mainDisplay.mainPhotos).not.toBe(inputPhotos);
     });
   });
 
@@ -188,7 +188,7 @@ describe('modal', () => {
       const inputArray = new Array(20);
       const ADD_PHOTOS = addPhotos(inputArray);
       const newState = photoApp(undefined, ADD_PHOTOS);
-      expect(newState.mainDisplay.photos.length).not.toBe(null);
+      expect(newState.mainDisplay.mainPhotos.length).not.toBe(null);
       expect(newState.modal.photos.length).not.toBe(null);
       expect(newState.modal.photos).not.toBe(newState.mainDisplay.photos);
     });
@@ -221,11 +221,11 @@ describe('modal', () => {
       expect(newState.modal.photo).toBe(0);
     });
 
-    test('should set the photos property to \'NONE\' if toggling the modal off', () => {
+    test('should set the photos property to 0 if toggling the modal off', () => {
       const workingState = mockState(new Array(5), 'FULLSIZE', 'NONE', true, 3);
       const TOGGLE_MODAL = toggleModal(3);
       const newState = photoApp(workingState, TOGGLE_MODAL);
-      expect(newState.modal.photo).toBe('NONE');
+      expect(newState.modal.photo).toBe(0);
     });
 
     test('should toggle state boolean property', () => {
