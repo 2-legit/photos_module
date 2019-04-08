@@ -6,6 +6,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { connect } from 'react-redux';
+import { checkWidth } from '../../actionCreators/index.js';
+
 import PhotoWrapperCol from './PhotoWrapperCol';
 import PhotoWrapper from './PhotoWrapper';
 
@@ -53,4 +56,21 @@ class MainDisplay extends React.Component {
   }
 }
 
-export default MainDisplay;
+const mapStateToProps = ({ mainDisplay }) => ({
+  displayMode: (() => {
+    if (mainDisplay.displayMode === 'FULLSIZE') {
+      return 2;
+    } else if (mainDisplay.displayMode === 'MIDSIZE') {
+      return 1;
+    } else {
+      return 0;
+    }
+  })(),
+});
+
+const mapDispatchToProps = {
+  onResize: checkWidth,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainDisplay);
+export const MainDisplayRaw = MainDisplay;
