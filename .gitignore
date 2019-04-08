@@ -30,5 +30,4 @@ test/compiled
 server/database/pass.js
 
 # Test data and incomplete work
-test/components/Modal.test.js
 data/testPhotoData.js
