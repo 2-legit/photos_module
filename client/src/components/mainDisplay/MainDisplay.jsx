@@ -14,7 +14,7 @@ import PhotoWrapper from './PhotoWrapper.jsx';
 
 const Background = styled.div`
   width: 100%;
-  height: 500px;
+  height: 50%;
   background-color: #303030;
   padding-top: 1px;
   padding-bottom: 1px;
