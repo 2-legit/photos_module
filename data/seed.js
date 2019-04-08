@@ -17,7 +17,7 @@ const seedDatabase = (rooms) => {
           array.push({
             list: p,
             roomid: i,
-            imageurl: faker.image.imageUrl(),
+            imageurl: `http://loremflickr.com/640/480/house,room?random=${p}`,
             imagedesc: faker.fake('{{lorem.word}} {{lorem.word}} {{lorem.word}}'),
           });
         }
