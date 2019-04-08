@@ -84,7 +84,7 @@ export function PhotoNav(props) {
     onClick={() => props.onButtonClick(props.photo)}
     >
       <img
-      style={{objectFit: 'contain'}}
+      style={{objectFit: 'cover', width: '100%', height: '100%'}}
       src={props.imageurl}
       />
     </PhotoWrapper>
