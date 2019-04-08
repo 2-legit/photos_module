@@ -5,10 +5,8 @@
 
 import React from 'react';
 
-import MainDisplay from './mainDisplay/MainDisplay.jsx';
-import Modal from './modal/Modal.jsx';
-
-import testPhotoData from '../../../data/testPhotoData.js';
+import MainDisplay from './mainDisplay/MainDisplay';
+import Modal from './modal/Modal';
 
 function App() {
   return (
