@@ -5,11 +5,15 @@
 
 import React from 'react';
 
-import MainDisplay from './mainDisplay/MainDisplay.jsx';
+import MainDisplay from './mainDisplay/MainDisplay';
+
+import photos from '../../../data/testPhotoData';
+
+const imageurls = photos.map(image => image.imageurl);
 
 function App() {
   return (
-    <MainDisplay photos={[]} />
+    <MainDisplay photos={imageurls} displayMode={2} />
   );
 }
 
