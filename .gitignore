@@ -25,6 +25,7 @@ build/
 dist/
 public/main.js
 test/compiled
+public/*.png
 
 # Database information
 server/database/pass.js
