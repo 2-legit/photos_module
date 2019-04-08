@@ -5,9 +5,9 @@
 
 import React from 'react';
 
-import MainDisplay from './mainDisplay/MainDisplay.jsx';
+import MainDisplay from './mainDisplay/MainDisplay';
 
-import photos from '../../../data/testPhotoData.js';
+import photos from '../../../data/testPhotoData';
 
 const imageurls = photos.map(image => image.imageurl);
 
