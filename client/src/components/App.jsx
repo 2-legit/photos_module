@@ -6,14 +6,14 @@
 import React from 'react';
 
 import MainDisplay from './mainDisplay/MainDisplay';
-
-import photos from '../../../data/testPhotoData';
-
-const imageurls = photos.map(image => image.imageurl);
+import Modal from './modal/Modal';
 
 function App() {
   return (
-    <MainDisplay photos={imageurls} displayMode={2} />
+    <div>
+      <MainDisplay />
+      <Modal />
+    </div>
   );
 }
 

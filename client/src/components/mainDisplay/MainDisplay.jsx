@@ -7,14 +7,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { connect } from 'react-redux';
-import { checkWidth } from '../../actionCreators/index.js';
+import { checkWidth, addPhotos } from '../../actionCreators/index.js';
 
 import PhotoWrapperCol from './PhotoWrapperCol';
 import PhotoWrapper from './PhotoWrapper';
 
 const Background = styled.div`
   width: 100%;
-  height: 600px;
+  height: 50%;
   background-color: #303030;
   padding-top: 1px;
   padding-bottom: 1px;
@@ -34,6 +34,11 @@ class MainDisplay extends React.Component {
   }
 
   componentDidMount() {
+    fetch('http://localhost:3000/photos/byroom/33/all')
+    .then(data => data.json())
+    .then(({ photos }) => {
+      this.props.addPhotos(photos);
+    });
     window.addEventListener('resize', this.props.onResize);
   }
 
@@ -57,6 +62,7 @@ class MainDisplay extends React.Component {
 }
 
 const mapStateToProps = ({ mainDisplay }) => ({
+  photos: mainDisplay.mainPhotos.map(photo => photo.imageurl),
   displayMode: (() => {
     if (mainDisplay.displayMode === 'FULLSIZE') {
       return 2;
@@ -69,6 +75,7 @@ const mapStateToProps = ({ mainDisplay }) => ({
 });
 
 const mapDispatchToProps = {
+  addPhotos,
   onResize: checkWidth,
 };
 
