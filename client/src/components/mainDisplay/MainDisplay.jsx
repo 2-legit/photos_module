@@ -9,8 +9,8 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { checkWidth, addPhotos } from '../../actionCreators/index.js';
 
-import PhotoWrapperCol from './PhotoWrapperCol.jsx';
-import PhotoWrapper from './PhotoWrapper.jsx';
+import PhotoWrapperCol from './PhotoWrapperCol';
+import PhotoWrapper from './PhotoWrapper';
 
 const Background = styled.div`
   width: 100%;
