@@ -8,10 +8,12 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 
 // import Modal from '../../client/src/components/modal/Modal.jsx';
-// import PhotoReel from '../../client/src/components/modal/PhotoReel.jsx';
-import { Close, Next, Prev, PhotoNav } from '../../client/src/components/modal/Buttons.jsx';
+import PhotoReel from '../../client/src/components/modal/PhotoReel.jsx';
+import {
+  Close, Next, Prev, PhotoNav,
+} from '../../client/src/components/modal/Buttons.jsx';
 
-// import photos from '../../data/testPhotoData.js';
+import testPhotoData from '../../data/testPhotoData';
 
 describe('buttons', () => {
   describe('close button', () => {
@@ -66,7 +68,7 @@ describe('buttons', () => {
 
     test('should have an id set to the `photo` prop', () => {
       const wrapper = shallow(<PhotoNav photo={5} />);
-      expect(wrapper.props()).toHaveProperty('id', 'nav-5')
+      expect(wrapper.props()).toHaveProperty('id', 'nav-5');
     });
 
     test('should have an href pointing to itself', () => {
@@ -76,6 +78,20 @@ describe('buttons', () => {
   });
 });
 
-xdescribe('photo reel component', () => {});
+describe('photo reel component', () => {
+  test('should have specific subcomponent structure', () => {
+    const wrapper = shallow(<PhotoReel photos={[]}/>);
+    expect(wrapper.find('FlexRow')).toHaveLength(1);
+    expect(wrapper.find('Next')).toHaveLength(1);
+    expect(wrapper.find('ScrollBox')).toHaveLength(1);
+    expect(wrapper.find('Prev')).toHaveLength(1);
+  });
+
+  test('should dynamically render PhotoNav components', () => {
+    const target = testPhotoData.length;
+    const wrapper = shallow(<PhotoReel photos={testPhotoData}/>);
+    expect(wrapper.find('PhotoNav')).toHaveLength(target);
+  });
+});
 
 xdescribe('modal component', () => {});

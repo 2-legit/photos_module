@@ -13,6 +13,8 @@ const FlexRow = styled.div`
   justify-content: space-between;
 `;
 
+FlexRow.displayName = 'FlexRow';
+
 const ScrollBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -21,20 +23,25 @@ const ScrollBox = styled.div`
   scroll-behavior: smooth;
 `;
 
+ScrollBox.displayName = 'ScrollBox';
+
 function PhotoReel(props) {
   return (
     <FlexRow>
-      <Next onButtonClick={onButtonClick} />
+      <Next onButtonClick={props.onButtonClick} />
       <ScrollBox>
-        {props.photos.map(photo, index => (
+        {props.photos.map((photo, index) => (
           <PhotoNav
+          key={index}
           photo={index}
           imageurl={photo.imageurl}
-          onButtonClick={onButtonClick}
+          onButtonClick={props.onButtonClick}
           />
         ))}
       </ScrollBox>
-      <Prev onButtonClick={onButtonClick} />
+      <Prev onButtonClick={props.onButtonClick} />
     </FlexRow>
   );
 }
+
+export default PhotoReel;
