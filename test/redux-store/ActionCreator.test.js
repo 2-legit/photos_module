@@ -3,11 +3,9 @@
  * Tests to make sure javascript is working
  */
 
-import actionCreators from '../../client/src/actionCreators/index';
-
-const {
+import {
   addPhotos, checkWidth, focusImage, defocusAll, toggleModal, modalSelect,
-} = actionCreators;
+} from '../../client/src/actionCreators/index';
 
 describe('addPhotos', () => {
   test('should be a function', () => {
