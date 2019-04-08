@@ -4,7 +4,7 @@
  */
 
 const initialState = {
-  photos: [],
+  mainPhotos: [],
   displayMode: 'FULLSIZE',
   inFocus: 'NONE',
 };
@@ -13,15 +13,15 @@ function mainDisplay(state = initialState, action) {
   const TYPE = action !== undefined && action !== null ? action.type : 'INVALID';
 
   let newState;
-  let photos;
+  let mainPhotos;
   let displayMode;
   let inFocus;
 
   switch (TYPE) {
     case 'ADD_PHOTOS':
-      photos = action.photos.slice(0, 5);
+      mainPhotos = action.photos.slice(0, 5);
       newState = Object.assign({}, state, {
-        photos,
+        mainPhotos,
       });
       return newState;
     case 'CHECK_WIDTH':

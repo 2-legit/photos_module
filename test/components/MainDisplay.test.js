@@ -94,11 +94,10 @@ describe('photo-wrapper-column component', () => {
 describe('main display component', () => {
   const images = testPhotoData.map(image => image.imageurl).slice(0, 5);
 
-  test('should render child components', () => {
+  test('should render two PhotoWrapperCol components', () => {
     const wrapper = shallow(<MainDisplay photos={images}/>);
 
     expect(wrapper.find('PhotoWrapperCol')).toHaveLength(2);
-    expect(wrapper.find('PhotoWrapper')).toHaveLength(5);
   });
 
   test('should change display mode when resizing window', () => {

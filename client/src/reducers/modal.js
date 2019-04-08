@@ -6,7 +6,7 @@
 const initialState = {
   photos: [],
   onScreen: false,
-  photo: 'NONE',
+  photo: 0,
 };
 
 function modal(state = initialState, action) {
@@ -33,7 +33,7 @@ function modal(state = initialState, action) {
           photo = 0;
         }
       } else {
-        photo = 'NONE';
+        photo = 0;
       }
       newState = Object.assign({}, state, {
         onScreen,
