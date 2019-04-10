@@ -36,9 +36,9 @@ function PhotoReel(props) {
       <Prev onButtonClick={props.onButtonClick} photo={props.photo} />
       <ScrollBox>
         {props.photos.map((photo, index) => (
-          <a href={`#nav-${index}`}>
+          <a href={`#photo-${index}`}>
           <PhotoNav
-          key={index}
+          key={`p-${index}`}
           photo={index}
           current={props.photo}
           imageurl={photo.imageurl}
