@@ -34,7 +34,8 @@ class MainDisplay extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/photos/byroom/33/all')
+    const locationid = window.location.pathname.split('/')[1];
+    fetch(`/photos/byroom/${locationid}/all`)
     .then(data => data.json())
     .then(({ photos }) => {
       this.props.addPhotos(photos);

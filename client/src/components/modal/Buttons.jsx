@@ -40,7 +40,7 @@ const ArrowButton = styled.button`
 
 export function Next(props) {
   return (
-    <a href={`#nav-${props.photo + 1}`}>
+    <a href={`#photo-${props.photo + 1}`}>
       <ArrowButton onClick={() => props.onButtonClick('NEXT')}>
         <img
         style={{objectFit: 'contain', width: '100%', height: '100%'}}
@@ -53,7 +53,7 @@ export function Next(props) {
 
 export function Prev(props) {
   return (
-    <a href={`#nav-${props.photo - 1}`}>
+    <a href={`#photo-${props.photo - 1}`}>
       <ArrowButton onClick={() => props.onButtonClick('PREV')}>
         <img
         style={{objectFit: 'contain', width: '100%', height: '100%'}}
@@ -80,7 +80,7 @@ export function PhotoNav(props) {
     <PhotoWrapper
     current={props.current}
     photo={props.photo}
-    id={`nav-${props.photo}`}
+    id={`photo-${props.photo}`}
     onClick={() => props.onButtonClick(props.photo)}
     >
       <img
