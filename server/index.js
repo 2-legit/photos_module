@@ -9,7 +9,7 @@ app.use(express.static(path.join(`${__dirname}/../public`)));
 
 app.use('/photos', router);
 
-const port = 3000;
+const port = 3002;
 
 app.listen(port, () => {
   console.log('[Server] Now listening on port', port);
