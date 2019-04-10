@@ -32,3 +32,4 @@ server/database/pass.js
 
 # Test data and incomplete work
 data/testPhotoData.js
+data/photos/*.jpg
