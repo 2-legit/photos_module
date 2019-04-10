@@ -5,6 +5,7 @@ module.exports = {
     get: (req, res) => {
       Photo.findAll({ where: { roomid: req.params.roomid } })
         .then((result) => {
+          res.set('Access-Control-Allow-Origin', '*');
           res.send({ photos: result });
         })
         .catch(() => {
