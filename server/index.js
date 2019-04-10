@@ -5,7 +5,7 @@ const initializeDatabase = require('./database/init.js');
 
 const app = express();
 
-app.use(express.static(path.join(`${__dirname}/../public`)));
+app.use('/:locationid', express.static(path.join(__dirname, '/../public')));
 
 app.use('/photos', router);
 
