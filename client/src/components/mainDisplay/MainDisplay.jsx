@@ -14,7 +14,7 @@ import PhotoWrapper from './PhotoWrapper';
 
 const Background = styled.div`
   width: 100%;
-  height: 50%;
+  height: 600px;
   background-color: #303030;
   padding-top: 1px;
   padding-bottom: 1px;
@@ -34,7 +34,7 @@ class MainDisplay extends React.Component {
   }
 
   componentDidMount() {
-    const locationid = window.location.pathname.split('/')[1];
+    const locationid = window.location.pathname.split('/')[2];
     fetch(`/photos/byroom/${locationid}/all`)
     .then(data => data.json())
     .then(({ photos }) => {
