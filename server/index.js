@@ -5,9 +5,9 @@ const initializeDatabase = require('./database/init.js');
 
 const app = express();
 
-app.use('/:locationid', express.static(path.join(__dirname, '/../public')));
+app.use('/photos/', express.static(path.join(__dirname, '/../public')));
 
-app.use('/photos', router);
+app.use('/photos/byroom', router);
 
 const port = 3002;
 

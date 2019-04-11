@@ -8,7 +8,8 @@ module.exports = {
           res.set('Access-Control-Allow-Origin', '*');
           res.send({ photos: result });
         })
-        .catch(() => {
+        .catch((error) => {
+          console.error(error);
           res.status(500).end();
         });
     },
