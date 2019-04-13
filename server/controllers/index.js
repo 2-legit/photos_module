@@ -4,15 +4,15 @@ const sequelize = require('../database/connection.js');
 module.exports = {
   photos: {
     get: (req, res) => {
-      sequelize.query('USE photo');
-      Photo.findAll({ where: { roomid: req.params.roomid } })
+      sequelize.query('USE photo')
+        .then(() => Photo.findAll({ where: { roomid: req.params.roomid } }))
         .then((result) => {
-          console.log(`[Sequelize] query made for ${req.params.roomid}`);
+          console.log(`Query made for ${req.params.roomid}`);
           res.set('Access-Control-Allow-Origin', '*');
           res.send({ photos: result });
         })
         .catch((error) => {
-          console.error('[Sequelize]', error.SequelizeDatabaseError);
+          console.error(error);
           res.status(500).end();
         });
     },
