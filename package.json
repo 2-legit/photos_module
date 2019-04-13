@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "dev:server": "nodemon server/index.js",
-    "dev:react": "webpack -d --watch",
+    "dev:server": "node server/index.js",
+    "dev:react": "webpack -d",
     "seed": "node data/seed.js",
     "eslint": "eslint .; exit 0",
     "eslint:fix": "eslint . --fix; exit 0",
