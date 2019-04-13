@@ -14,7 +14,5 @@ const port = 3002;
 
 app.listen(port, () => {
   console.log('[Server] Now listening on port', port);
-  initializeDatabase().then(() => {
-    sequelize.query('USE photo');
-  });
+  initializeDatabase().then(() => {});
 });
