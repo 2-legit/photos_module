@@ -7,9 +7,8 @@ WORKDIR /src/app
 # What source code do you want to copy, and where to put it?
 COPY . /src/app
 # Does your app have any dependencies that should be installed?
-RUN npm install
-RUN npm run dev:react
+
 # What port will the container talk to the outside world with once created?
 EXPOSE 3002
 # How do you start your app?
-CMD [ "npm", "run", "dev:server" ]
+CMD [ "npm install; npm run react:pro; npm run server" ]
