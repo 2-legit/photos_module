@@ -23,6 +23,7 @@ const Fullscreen = styled.div`
   top: 0px;
   left: 0px;
   visibility: ${props => props.onScreen ? 'visible' : 'collapse'};
+  z-index: 99;
 `;
 
 Fullscreen.displayName = 'Fullscreen';
