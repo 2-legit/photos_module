@@ -14,6 +14,7 @@ const StyledWrapper = styled.div`
   overflow: hidden;
   margin: 1px;
   opacity: ${props => (props.inFocus === 'NONE' || props.inFocus === props.id) ? '1' : '0.5'};
+  transition: opacity 0.15s
 `;
 
 StyledWrapper.displayName = 'StyledWrapper';
