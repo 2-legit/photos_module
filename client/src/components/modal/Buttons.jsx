@@ -6,9 +6,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import CLOSE_BUTTON from '../../../img/closeButton.png';
-import NEXT_BUTTON from '../../../img/nextButton.png';
-import PREV_BUTTON from '../../../img/prevButton.png';
+const CLOSE_BUTTON = 'https://i.imgur.com/qatFVSY.png';
+const NEXT_BUTTON = 'https://i.imgur.com/obgu6AY.png';
+const PREV_BUTTON = 'https://i.imgur.com/to8JxlF.png';
 
 const CloseButton = styled.button`
   position: fixed;
