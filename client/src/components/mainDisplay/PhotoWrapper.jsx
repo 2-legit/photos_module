@@ -14,7 +14,15 @@ const StyledWrapper = styled.div`
   overflow: hidden;
   margin: 1px;
   opacity: ${props => (props.inFocus === 'NONE' || props.inFocus === props.id) ? '1' : '0.5'};
-  transition: opacity 0.15s
+  transition: opacity 0.15s;
+`;
+
+const StyledImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(${props => (props.inFocus === props.id) ? '1.1' : '1'});
+  transition: all ease-in-out 0.15s;
 `;
 
 StyledWrapper.displayName = 'StyledWrapper';
@@ -22,8 +30,9 @@ StyledWrapper.displayName = 'StyledWrapper';
 function PhotoWrapper(props) {
   return (
     <StyledWrapper inFocus={props.inFocus} id={props.id}>
-      <img
-      style={{width: '100%', height: '100%', objectFit: 'cover'}}
+      <StyledImg
+      inFocus={props.inFocus}
+      id={props.id}
       src={props.imageurl}
       onClick={() => props.onPhotoClick(props.id)}
       onMouseEnter={() => props.onPhotoHover(props.id)}
