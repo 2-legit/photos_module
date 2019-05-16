@@ -8,7 +8,7 @@ const app = express();
 
 app.use('/location/:locationid', express.static(path.join(__dirname, '/../public')));
 
-app.use('/photos', router);
+app.use('/photos/byroom', router);
 
 const port = 3002;
 
