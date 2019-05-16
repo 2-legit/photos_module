@@ -1,0 +1,11 @@
+# Dependencies folder
+*/node_modules*
+
+# Compiled files
+*/public/main.js
+
+# Coverage reports
+*/coverage*
+
+# Sensitive information
+*/server/database/pass.js
