@@ -10,7 +10,7 @@ module.exports = {
 
   moduleFileExtensions: ['js', 'json', 'jsx'],
 
-  setupFiles: ['<rootDir>/test/enzyme.config.js'],
+  setupFiles: ['<rootDir>/test/enzyme.config.js', '<rootDir>/test/fetch.config.js'],
 
   testEnvironment: 'jsdom',
 
