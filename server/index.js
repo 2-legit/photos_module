@@ -6,7 +6,7 @@ const sequelize = require('./database/connection.js');
 
 const app = express();
 
-app.use('/:locationid', express.static(path.join(__dirname, '/../public')));
+app.use('/location/:locationid', express.static(path.join(__dirname, '/../public')));
 
 app.use('/photos', router);
 
