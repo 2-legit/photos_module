@@ -71,12 +71,12 @@ describe('buttons', () => {
 
     test('should have an id set to the `photo` prop', () => {
       const wrapper = shallow(<PhotoNav photo={5} />);
-      expect(wrapper.props()).toHaveProperty('id', 'nav-5');
+      expect(wrapper.props()).toHaveProperty('id', 'photo-5');
     });
 
     test('should have an href pointing to itself', () => {
       const wrapper = shallow(<PhotoNav photo={5} />);
-      expect(wrapper.props()).toHaveProperty('href', '#nav-5');
+      expect(wrapper.parent.props()).toHaveProperty('href', '#photo-5');
     });
   });
 });
