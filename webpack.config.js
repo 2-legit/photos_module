@@ -10,12 +10,6 @@ module.exports = {
     filename: 'main.js',
   },
 
-  plugins: [
-    new CompressionPlugin({
-      test: /\.(js|jsx)$/
-    })
-  ],
-
   module: {
     rules: [
       {
