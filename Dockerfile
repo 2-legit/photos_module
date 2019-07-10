@@ -1,14 +1,21 @@
-# What image do you want to start building on?
+# Images to be built from
 FROM node:8.15.1-alpine
-# Make a folder in your image where your app's source code can live
-RUN mkdir -p /src/app
-# Tell your container where your app's source code will live
-WORKDIR /src/app
-# What source code do you want to copy, and where to put it?
-COPY . /src/app
-# Does your app have any dependencies that should be installed?
 
-# What port will the container talk to the outside world with once created?
+# Create the working directory for this app's source code
+RUN mkdir -p /src/app
+
+# Set the working directory
+WORKDIR /src/app
+
+# Copy source code and move to specified directory
+COPY . /src/app
+
+# Set up container dependencies and environment
+RUN npm install
+RUN npm run react:pro
+
+# Open port to traffic
 EXPOSE 3002
-# How do you start your app?
-CMD [ "npm install; npm run react:pro; npm run server" ]
+
+# Commands to run on container spool
+CMD [ "npm", "run", "server" ]
