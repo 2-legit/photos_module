@@ -42,7 +42,7 @@ const secretsTemplate = function(username, password) {
 
     if (await writeFileAsync(dbSecretsPath, dbSecrets)) {
       rl.close();
-      require('./index');
+      require('./app');
     }
 
   } catch (error) {
