@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const initialize = require('./init');
+
 const { DB_USER, DB_PASS } = process.env;
 
 const sequelize = new Sequelize(null, DB_USER, DB_PASS, {
