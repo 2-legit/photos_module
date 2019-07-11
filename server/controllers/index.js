@@ -1,10 +1,9 @@
 const Photo = require('../model/photos.js');
-const sequelize = require('../database/connection.js');
 
 module.exports = {
   photos: {
     get: (req, res) => {
-      sequelize.query('USE photo')
+      Photo.sync()
         .then(() => Photo.findAll({ where: { roomid: req.params.roomid } }))
         .then((result) => {
           res.set('Access-Control-Allow-Origin', '*');
