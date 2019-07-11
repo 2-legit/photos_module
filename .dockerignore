@@ -6,6 +6,3 @@
 
 # Coverage reports
 */coverage*
-
-# Sensitive information
-*/server/database/pass.js

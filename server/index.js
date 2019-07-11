@@ -1,22 +1,29 @@
-const express = require('express');
-const path = require('path');
-const compression = require('compression');
+const readline = require('readline');
 
-const router = require('./router');
-const initializeDatabase = require('./database/init.js');
-const sequelize = require('./database/connection.js');
-
-const app = express();
-
-app.use(compression());
-
-app.use('/location/:locationid', express.static(path.join(__dirname, '/../public/')));
-
-app.use('/photos/byroom', router);
-
-const port = 3002;
-
-app.listen(port, () => {
-  console.log('[Server] Now listening on port', port);
-  initializeDatabase();
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
+
+const prompt = function(promptString) {
+  return new Promise((resolve, reject) => {
+    rl.question(promptString, resolve);
+  });
+};
+
+(async function() {
+  try {
+
+    process.env.DB_USER = await prompt('Username: ');
+    process.env.DB_PASS = await prompt('Password: ');
+
+    rl.close();
+    
+    require('./app');
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+})();
