@@ -6,7 +6,7 @@ const rl = readline.createInterface({
 });
 
 const prompt = function (promptString) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     rl.question(promptString, resolve);
   });
 };

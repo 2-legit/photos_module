@@ -10,6 +10,7 @@ module.exports = {
           res.send({ photos: result });
         })
         .catch((error) => {
+          console.error(error);
           res.status(500).end();
         });
     },
