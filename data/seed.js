@@ -22,10 +22,10 @@ const seedDatabase = (rooms) => {
           });
         }
       }
-      Photo.bulkCreate(array) // Create the records on the database
-        .catch(error => console.error('error'));
+      return array;
     })
-    .catch(error => console.error('error'));
+    .then(array => Photo.bulkCreate(array))
+    .catch(error => console.error(error));
 };
 
-seedDatabase(100);
+module.exports = seedDatabase;
