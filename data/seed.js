@@ -8,11 +8,11 @@ const randomNumber = max => Math.ceil(Math.random() * max);
 const seedDatabase = (rooms) => {
   // Drop the database to clear all prior information
   database.query('DROP DATABASE IF EXISTS photo;')
-    .then(() => initialize()) // Create the database again and create the table
+    .then(() => initialize(database)) // Create the database again and create the table
     .then(() => { // Generate test instances in an array
       const array = [];
       for (let i = 0; i < rooms; i += 1) {
-        const numberOfPictures = randomNumber(10) + 4;
+        const numberOfPictures = randomNumber(15) + 15;
         for (let p = 0; p < numberOfPictures; p += 1) {
           array.push({
             list: p,
@@ -23,9 +23,9 @@ const seedDatabase = (rooms) => {
         }
       }
       Photo.bulkCreate(array) // Create the records on the database
-        .catch(error => console.error(error));
+        .catch(error => console.error('error'));
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error('error'));
 };
 
 seedDatabase(100);
