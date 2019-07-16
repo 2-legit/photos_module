@@ -1,4 +1,8 @@
 const Sequelize = require('sequelize');
+const initialize = require('./init');
+const auth = require('./auth');
+
+auth();
 
 const { DB_USER, DB_PASS } = process.env;
 
@@ -13,5 +17,7 @@ const sequelize = new Sequelize(null, DB_USER, DB_PASS, {
     acquire: 60000,
   },
 });
+
+initialize(sequelize);
 
 module.exports = sequelize;

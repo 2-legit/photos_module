@@ -3,8 +3,6 @@
  * Creates a new database and adds a table to it
  */
 
-const sequelize = require('./connection.js');
-
 // Define constants for use in creating the database and tables
 const DB_NAME = 'photo';
 const TABLE_NAME = 'photos';
@@ -31,14 +29,14 @@ function createTableQueryString(tableName, table) {
 }
 
 // Database initialization function
-function initialize() {
-  return sequelize.authenticate() // Check if the connection to MySQL is ready
+function initialize(connection) {
+  return connection.authenticate() // Check if the connection to MySQL is ready
     // then, create the database if it does not already exist
-    .then(() => sequelize.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`))
+    .then(() => connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`))
     // then, use the database
-    .then(() => sequelize.query(`USE ${DB_NAME};`))
+    .then(() => connection.query(`USE ${DB_NAME};`))
     // then, create the table
-    .then(() => sequelize.query(createTableQueryString(TABLE_NAME, TABLE)))
+    .then(() => connection.query(createTableQueryString(TABLE_NAME, TABLE)))
     .catch(error => console.error(error));
 }
 

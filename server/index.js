@@ -1,29 +1,16 @@
-const readline = require('readline');
+const express = require('express');
+const path = require('path');
+const compression = require('compression');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const router = require('./router');
 
-const prompt = function(promptString) {
-  return new Promise((resolve, reject) => {
-    rl.question(promptString, resolve);
-  });
-};
+const app = express();
+const port = process.env.PORT || 3002;
 
-(async function() {
-  try {
+app.use(compression());
 
-    process.env.DB_USER = await prompt('Username: ');
-    process.env.DB_PASS = await prompt('Password: ');
+app.use('/location/:locationid', express.static(path.join(__dirname, '/../public/')));
 
-    rl.close();
-    
-    require('./app');
+app.use('/photos/byroom', router);
 
-  } catch (error) {
-
-    console.error(error);
-
-  }
-})();
+app.listen(port, () => console.log('Server listening on port', port));
