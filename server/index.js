@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const compression = require('compression');
 
+const seed = require('../data/seed.js');
+
+seed(100);
+
 const router = require('./router');
 
 const app = express();

@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 const initialize = require('./init');
-const auth = require('./auth');
+const auth = require('./auth.js');
 
 auth();
 
-const { DB_USER, DB_PASS } = process.env;
+const { DB_USER, DB_PASS, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(null, DB_USER, DB_PASS, {
-  host: 'localhost',
+  host: DB_HOST,
   port: 3306,
   dialect: 'mysql',
   logging: false,
